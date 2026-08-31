@@ -33,6 +33,14 @@ namespace Mendelings.Core
         public int Mood { get; set; }
         public int Energy { get; set; }
 
+        //состояния
+        public bool IsSleeping { get; set; } = false;
+        public DateTime? SleepStarted { get; set; }
+        public int HungerMinutes { get; set; }
+        public int MoodMinutes { get; set; }
+        public int EnergyMinutes { get; set; }
+        public int HealthMinutes { get; set; }
+
         //Дата рождения и последнее обновление
         public DateTime BirthDate { get; set; }
         public DateTime LastUpdate { get; set; }
