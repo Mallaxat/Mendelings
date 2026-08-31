@@ -1,0 +1,45 @@
+﻿Mendelings
+│
+├── Mendelings.Core
+│   ├── Pet
+│   ├── GeneticTrait
+│   ├── BreedingResult
+│   ├── GeneticsService
+│   └── PetService
+│
+├── Mendelings.Data
+│   ├── MendelingsDbContext
+│   ├── PetRepository
+│   └── GeneticsRepository
+│
+└── Mendelings.UI
+    ├── MainViewModel
+    ├── PetsViewModel
+    ├── PetViewModel
+    ├── BreedingViewModel
+    ├── FamilyTreeViewModel
+    └── Views
+
+Mendelings.Core
+    +PetBuilder —  будет строить питомцев
+    +Pet — модель питомца.
+    +GeneticTrait — описание одного генетического признака.
+    +GeneticsService — генетическая логика
+    +PetService — игрова логика(сон, еда и тд)
+    BreedingResult — простой вспомогательный класс результата скрещивания.
+
+Mendelings.Data
+
+    +MendelingsDbContext — Контекст для CodeFirst
+    +PetRepository — вся работа с питомцами в БД: получить, сохранить, обновить, удалить, получить родителей, детей, поколения.
+    +GeneticsRepository — вся работа с генетическими справочниками
+    +PetConfiguration/GeneticTraitConfiguration  —  настройка для бд питомца и признаков
+
+Mendelings.UI
+
+    MainViewModel — навигация между экранами.
+    PetsViewModel — список питомцев и выбор питомца.
+    PetViewModel — экран одного питомца
+    BreedingViewModel — выбор двух родителей,
+    GeneticsViewModel — генетическая лаборатория
+    FamilyTreeViewModel — родословная
