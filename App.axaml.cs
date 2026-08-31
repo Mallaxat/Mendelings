@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Mendelings.Core;
@@ -9,12 +10,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Threading.Tasks;
 
 namespace Mendelings;
 
 public partial class App : Application
 {
     public static ServiceProvider Services { get; private set; } = null!;
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -31,13 +34,18 @@ public partial class App : Application
 
         //ключ для настройки подключения
         var connectionString = configuration.GetConnectionString("MendelingsDb");
-        
+
         //коллекция сервисов технологии зависиомстей
         var services = new ServiceCollection();
-        
+
         //регестрация MendelingsDbContext
-        services.AddDbContext<MendelingsDbContext>(options =>options.UseSqlServer(connectionString));
-        
+        services.AddDbContext<MendelingsDbContext>(
+            options => options.UseSqlServer(connectionString));
+        //Окна который будет уметь создавать
+        services.AddTransient<PetViewModel>();
+        services.AddTransient<PetModelWindow>();
+
+        //Классы который будет уметь создавать
         services.AddTransient<PetRepository>();
         services.AddTransient<GeneticsRepository>();
 
@@ -45,9 +53,12 @@ public partial class App : Application
         services.AddTransient<GeneticsService>();
 
         services.AddTransient<MainViewModel>();
+
         // На основе зарегистрированных зависимостей
         // создаём DI-контейнер
         Services = services.BuildServiceProvider();
+
+
 
         // Создаём главное окно Avalonia
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
@@ -60,7 +71,23 @@ public partial class App : Application
         }
 
         base.OnFrameworkInitializationCompleted();
+        if (!Design.IsDesignMode)
+        {
+            _ = InitializeDatabaseAsync();
+        }
     }
 
- 
+    private async Task InitializeDatabaseAsync()
+    {
+        using var scope = Services.CreateScope();
+
+        var geneticsRepository =
+            scope.ServiceProvider.GetRequiredService<GeneticsRepository>();
+
+        var petRepository =
+            scope.ServiceProvider.GetRequiredService<PetRepository>();
+
+        await geneticsRepository.InitializeDefaultTraitsAsync();
+        await petRepository.InitializeDefaultPetsAsync();
+    }
 }

@@ -9,6 +9,12 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <Folder Include="Assets\Eyes\" />
+    <Folder Include="Assets\Body\" />
+    <Folder Include="Assets\Head\" />
+    <Folder Include="Assets\Tail\" />
+    <Folder Include="Assets\Ears\" />
+    <Folder Include="Assets\Horns\" />
     <Folder Include="UI\" />
   </ItemGroup>
 

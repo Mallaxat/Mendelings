@@ -39,7 +39,7 @@ Mendelings.UI
 
     MainViewModel — навигация между экранами.
     PetsViewModel — список питомцев и выбор питомца.
-    PetViewModel — экран одного питомца
+    +PetViewModel — экран одного питомца
     BreedingViewModel — выбор двух родителей,
     GeneticsViewModel — генетическая лаборатория
     FamilyTreeViewModel — родословная

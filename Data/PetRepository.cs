@@ -17,6 +17,48 @@ namespace Mendelings.Data
             _context = context;
         }
 
+        public async Task InitializeDefaultPetsAsync()
+        {
+            bool hasPets = await _context.Pets.AnyAsync();
+
+            if (hasPets) return;
+
+            DateTime now = DateTime.Now;
+
+            Pet female = new PetBuilder()
+                .SetName("Luna")
+                .SetSex(PetSex.Female)
+                .SetParents(null, null)
+                .SetGeneration(1)
+                .SetState(100, 100, 100, 100)
+                .SetDates(now, now)
+                .SetBodyGene("Bb")
+                .SetHeadGene("Hh")
+                .SetTailGene("Tt")
+                .SetEyesGene("Ee")
+                .SetEarsGene("Aa")
+                .SetHornsGene("Gg")
+                .Build();
+
+            Pet male = new PetBuilder()
+                .SetName("Max")
+                .SetSex(PetSex.Male)
+                .SetParents(null, null)
+                .SetGeneration(1)
+                .SetState(100, 100, 100, 100)
+                .SetDates(now, now)
+                .SetBodyGene("bb")
+                .SetHeadGene("Hh")
+                .SetTailGene("tt")
+                .SetEyesGene("Ee")
+                .SetEarsGene("aa")
+                .SetHornsGene("gg")
+                .Build();
+
+            await _context.Pets.AddRangeAsync(female, male);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<Pet>> GetAllAsync() 
         {
             //Так тут сразу будет грузить с объектами родителей
