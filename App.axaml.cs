@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Mendelings.Core;
 using Mendelings.Data;
 using Mendelings.ViewModels;
 using Mendelings.Views;
@@ -33,9 +34,17 @@ public partial class App : Application
         
         //коллекция сервисов технологии зависиомстей
         var services = new ServiceCollection();
+        
         //регестрация MendelingsDbContext
         services.AddDbContext<MendelingsDbContext>(options =>options.UseSqlServer(connectionString));
         
+        services.AddTransient<PetRepository>();
+        services.AddTransient<GeneticsRepository>();
+
+        services.AddTransient<PetService>();
+        services.AddTransient<GeneticsService>();
+
+        services.AddTransient<MainViewModel>();
         // На основе зарегистрированных зависимостей
         // создаём DI-контейнер
         Services = services.BuildServiceProvider();
@@ -45,7 +54,8 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainViewModel(),
+                //получить уже зарегестрированное окно
+                DataContext = Services.GetRequiredService<MainViewModel>()
             };
         }
 

@@ -14,7 +14,8 @@ namespace Mendelings.Data
 
         public MendelingsDbContext(DbContextOptions<MendelingsDbContext> options)
             : base(options)
-        {}
+        {
+        }
         //Настраиваем конфигурацию создания наших объектов через переназначение метода
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
