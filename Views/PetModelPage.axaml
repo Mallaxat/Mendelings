@@ -177,18 +177,39 @@
             </StackPanel>
       
         </Grid>
-        
+
         <Grid x:Name="PetGrid"
               Grid.Row="1"
               Grid.RowSpan="2"
               Grid.Column="1">
+
             <Image x:Name="BodyImage"
-                   Source="/Assets/Body/BodyBig.png"
-                   ZIndex="1">
+                   Source="{Binding BodyImage}"
+                   ZIndex="2">
             </Image>
             <Image x:Name="HeadImage"
-                   Source="/Assets/Head/HeadBig.png"
+                   Source="{Binding HeadImage}"
+                   ZIndex="3">
+            </Image>
+
+            <Image x:Name="TailImage"
+                   Source="{Binding TailImage}"
+                   ZIndex="1">
+            </Image>
+
+            <Image x:Name="EyesImage"
+                   Source="{Binding EyesImage}"
+                   ZIndex="4">
+            </Image>
+
+            <Image x:Name="EarsImage"
+                   Source="{Binding EarsImage}"
                    ZIndex="2">
+            </Image>
+
+            <Image x:Name="HornsImage"
+                   Source="{Binding HornsImage}"
+                   ZIndex="1">
             </Image>
         </Grid>
 

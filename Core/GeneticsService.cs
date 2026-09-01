@@ -94,6 +94,14 @@ namespace Mendelings.Core
 
             return child;
         }
+        public string GetAssetPath(GeneticTrait trait, string genotype)
+        {
+            if (genotype.Contains(trait.DominantAllele))
+            {
+                return trait.DominantAssetPath;
+            }
 
+            return trait.RecessiveAssetPath;
+        }
     }
 }
