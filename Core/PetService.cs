@@ -70,8 +70,12 @@ namespace Mendelings.Core
         }
         public void Play(Pet pet)
         {
-            pet.Energy = Math.Max(0, pet.Energy - STATE_APPEND);
-            pet.Mood=Math.Min(pet.Mood + STATE_APPEND,100);
+            if(pet.Energy>= STATE_APPEND)
+            {
+                pet.Energy = Math.Max(0, pet.Energy - STATE_APPEND);
+                pet.Mood = Math.Min(pet.Mood + STATE_APPEND, 100);
+            }
+
         }
         public void StartSleep(Pet pet)
         {

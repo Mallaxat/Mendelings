@@ -14,11 +14,16 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <Grid ShowGridLines="True"
-        RowDefinitions="1*,1*,1*"
-          ColumnDefinitions="1*,1*,1*">
-            <Button Content="Открыть питомца"
-             Click="OpenPetWindow_Click"/>
+    <Grid 
+        ShowGridLines="True"
+        RowDefinitions="1*,10*,1*"
+          ColumnDefinitions="1*,10*,1*">
+        <ContentControl x:Name="PageContent"
+                        Grid.Column="1"
+                        Grid.Row="1"/>
+
+  
+
     </Grid>
 
 

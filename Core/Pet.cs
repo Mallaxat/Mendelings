@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace Mendelings.Core
         Female
     }
     //Класс хранит данные о питомце
-    public class Pet
+    public partial class Pet : ObservableObject
     {
         public bool IsDead { get; set; }
 
@@ -27,14 +28,21 @@ namespace Mendelings.Core
         //поколение
         public int Generation { get; set; }
 
+        [ObservableProperty]
+        private int health;
 
-        public int Health { get; set; }
-        public int Hunger { get; set; }
-        public int Mood { get; set; }
-        public int Energy { get; set; }
+        [ObservableProperty]
+        private int hunger;
+
+        [ObservableProperty]
+        private int mood;
+
+        [ObservableProperty]
+        private int energy;
 
         //состояния
-        public bool IsSleeping { get; set; } = false;
+        [ObservableProperty]
+        private bool isSleeping = false;
         public DateTime? SleepStarted { get; set; }
         public int HungerMinutes { get; set; }
         public int MoodMinutes { get; set; }

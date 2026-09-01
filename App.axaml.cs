@@ -43,7 +43,7 @@ public partial class App : Application
             options => options.UseSqlServer(connectionString));
         //Окна который будет уметь создавать
         services.AddTransient<PetViewModel>();
-        services.AddTransient<PetModelWindow>();
+        services.AddTransient<PetModelPage>();
 
         //Классы который будет уметь создавать
         services.AddTransient<PetRepository>();

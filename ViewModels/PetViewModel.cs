@@ -20,7 +20,7 @@ namespace Mendelings.ViewModels
 
         [ObservableProperty]
         private int age;
-   
+
         public PetViewModel(PetRepository petRepository,PetService petService)
         {
             _petRepository = petRepository;
@@ -28,8 +28,9 @@ namespace Mendelings.ViewModels
         }
         //загружаем пета и обновляем
         [RelayCommand]
-        public async Task LoadPetAsync(int id)
+        public async Task LoadPetAsync()
         {
+            int id = 2;
             CurrentPet = await _petRepository.GetByIdAsync(id);
 
             if (CurrentPet == null) return;

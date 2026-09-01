@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Mendelings.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Mendelings.Views;
@@ -9,11 +10,12 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-    }
+        var page = new PetModelPage
+        {
+            DataContext = App.Services.GetRequiredService<PetViewModel>()
+        };
 
-    private void OpenPetWindow_Click(object? sender, RoutedEventArgs e)
-    {
-        var window = App.Services.GetRequiredService<PetModelWindow>();
-        window.Show();
+        PageContent.Content = page;
+
     }
 }

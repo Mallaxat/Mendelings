@@ -38,8 +38,8 @@ namespace Mendelings.Data
                     RecessiveAllele = 'b',
                     DominantPhenotype = "Крупное тело",
                     RecessivePhenotype = "Маленькое тело",
-                    DominantAssetPath = "Assets/Body/body_big.png",
-                    RecessiveAssetPath = "Assets/Body/body_small.png"
+                    DominantAssetPath = "avares://Mendelings/Assets/Body/BodyBig.png",
+                    RecessiveAssetPath = "avares://Mendelings/Assets/Body/BodyLow.png"
                 },
 
                 new GeneticTrait
@@ -50,8 +50,8 @@ namespace Mendelings.Data
                     RecessiveAllele = 'h',
                     DominantPhenotype = "Круглая голова",
                     RecessivePhenotype = "Вытянутая голова",
-                    DominantAssetPath = "Assets/Head/head_round.png",
-                    RecessiveAssetPath = "Assets/Head/head_long.png"
+                    DominantAssetPath = "avares://Mendelings/Assets/Body/HeadBig.png",
+                    RecessiveAssetPath = "avares://Mendelings/Assets/Body/HeadLow.png"
                 },
 
                 new GeneticTrait
@@ -62,8 +62,8 @@ namespace Mendelings.Data
                     RecessiveAllele = 't',
                     DominantPhenotype = "Пушистый хвост",
                     RecessivePhenotype = "Гладкий хвост",
-                    DominantAssetPath = "Assets/Tail/tail_fluffy.png",
-                    RecessiveAssetPath = "Assets/Tail/tail_smooth.png"
+                    DominantAssetPath = "avares://Mendelings/Assets/Body/TailBig.png",
+                    RecessiveAssetPath = "avares://Mendelings/Assets/Body/TailLow.png"
                 },
 
                 new GeneticTrait
@@ -74,8 +74,8 @@ namespace Mendelings.Data
                     RecessiveAllele = 'e',
                     DominantPhenotype = "Красные глаза",
                     RecessivePhenotype = "Голубые глаза",
-                    DominantAssetPath = "Assets/Eyes/eyes_red.png",
-                    RecessiveAssetPath = "Assets/Eyes/eyes_blue.png"
+                    DominantAssetPath = "avares://Mendelings/Assets/Body/EyesRed.png",
+                    RecessiveAssetPath = "avares://Mendelings/Assets/Body/EyesBlue.png"
                 },
 
                 new GeneticTrait
@@ -86,8 +86,8 @@ namespace Mendelings.Data
                     RecessiveAllele = 'a',
                     DominantPhenotype = "Длинные уши",
                     RecessivePhenotype = "Короткие уши",
-                    DominantAssetPath = "Assets/Ears/ears_long.png",
-                    RecessiveAssetPath = "Assets/Ears/ears_short.png"
+                    DominantAssetPath = "avares://Mendelings/Assets/Body/EarsBig.png",
+                    RecessiveAssetPath = "avares://Mendelings/Assets/Body/EarsLow.png"
                 },
 
                 new GeneticTrait
@@ -98,7 +98,7 @@ namespace Mendelings.Data
                     RecessiveAllele = 'g',
                     DominantPhenotype = "Рога есть",
                     RecessivePhenotype = "Рогов нет",
-                    DominantAssetPath = "Assets/Horns/horns.png",
+                    DominantAssetPath = "avares://Mendelings/Assets/Body/Horns.png",
                     RecessiveAssetPath = string.Empty
                 }
             };

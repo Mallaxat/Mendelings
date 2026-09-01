@@ -1,0 +1,207 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Mendelings.ViewModels"
+             mc:Ignorable="d"
+             d:DesignWidth="800"
+             d:DesignHeight="450"
+             x:Class="Mendelings.Views.PetModelPage"
+             x:DataType="vm:PetViewModel">
+  
+    <Grid x:Name="MainGrid"
+          ShowGridLines="True"
+          RowDefinitions="1*,1*,1*"
+          ColumnDefinitions="1*,1*,1*"
+          >
+        <Grid x:Name="BlockPetInfoGrid"
+              ShowGridLines="False"
+              Grid.Column="0"
+              Grid.Row="0"
+              RowDefinitions="1*,1*,1*,1*,1*,1*,1*,1*"
+              ColumnDefinitions="1*,1*"
+              RowSpacing="2"
+              ColumnSpacing="3">
+            <Label x:Name="NameLabel"
+                   Content="Имя:"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="SexLabel"
+                   Content="Пол:"
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="AgeLabel"
+                   Content="Возраст:"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="HealthLabel"
+                   Content="Здоровье:"
+                   Grid.Column="0"
+                   Grid.Row="3"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="HungerLabel"
+                   Content="Голод:"
+                   Grid.Column="0"
+                   Grid.Row="4"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="MoodLabel"
+                   Content="Настроение:"
+                   Grid.Column="0"
+                   Grid.Row="5"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="EnergyLabel"
+                   Content="Энергия:"
+                   Grid.Column="0"
+                   Grid.Row="6"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="SleepingLabel"
+                   Content="Спит:"
+                   Grid.Column="0"
+                   Grid.Row="7"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+            <Label x:Name="NameLabelValue"
+                   Content="{Binding CurrentPet.Name}"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+            <Label x:Name="SexLabelValue"
+                   Content="{Binding CurrentPet.Sex}"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+            <Label x:Name="AgeLabelValue"
+                   Content="{Binding Age}"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+            <Label x:Name="HealthLabelValue"
+                   Content="{Binding CurrentPet.Health}"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+            <Label x:Name="HungerLabelValue"
+                   Content="{Binding CurrentPet.Hunger}"
+                   Grid.Column="1"
+                   Grid.Row="4"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+            <Label x:Name="MoodLabelValue"
+                   Content="{Binding CurrentPet.Mood}"
+                   Grid.Column="1"
+                   Grid.Row="5"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+            <Label x:Name="EnergyLabelValue"
+                   Content="{Binding CurrentPet.Energy}"
+                   Grid.Column="1"
+                   Grid.Row="6"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+            <Label x:Name="SleepingLabelValue"
+                   Content="{Binding CurrentPet.IsSleeping}"
+                   Grid.Column="1"
+                   Grid.Row="7"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Padding="1"/>
+
+        </Grid>
+
+        <Grid x:Name="BlockButtonGrid"
+              ShowGridLines="True"
+              Grid.Column="1" 
+              Grid.Row="0"
+              RowDefinitions="1*,5*,5*"
+              RowSpacing="4"
+              Margin="5">
+            <StackPanel x:Name="RowButtonStackPanel"
+                        Grid.Row="1"
+                        Orientation="Horizontal"
+                        Spacing="10"
+                        VerticalAlignment="Top">
+                <Button x:Name="FeedButton"
+                        Content="Кормить"
+                        Command="{Binding FeedCommand}"/>
+                <Button x:Name="PlayButton"
+                        Content="Играть"
+                        Command="{Binding PlayCommand}"/>
+                <Button x:Name="SleepButton"
+                        Content="Спать"
+                        Command="{Binding StartSleepCommand}"
+                        Click="SleepButton_Click"/>
+                <Button x:Name="WakeUpButton"
+                        Content="Разбудить"
+                        Command="{Binding WakeUpCommand}"
+                        Click="WakeUpButton_Click"/>
+                <Button x:Name="HealButton"
+                        Content="Подлечить"
+                        Command="{Binding HealCommand}"/>
+
+            </StackPanel>
+      
+        </Grid>
+        
+        <Grid x:Name="PetGrid"
+              Grid.Row="1"
+              Grid.RowSpan="2"
+              Grid.Column="1">
+            <Image x:Name="BodyImage"
+                   Source="/Assets/Body/BodyBig.png"
+                   ZIndex="1">
+            </Image>
+            <Image x:Name="HeadImage"
+                   Source="/Assets/Head/HeadBig.png"
+                   ZIndex="2">
+            </Image>
+        </Grid>
+
+
+        <Button Grid.Column="1"
+                Content="Update"
+                Command="{Binding LoadPetCommand}"/>
+        <Button Grid.Column="1"
+                Content="Refresh"
+                Command="{Binding RefreshStateCommand}"
+                Margin="0,70,0,0"/>
+
+    
+        
+    </Grid>
+</UserControl>
