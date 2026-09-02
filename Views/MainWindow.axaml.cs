@@ -14,9 +14,13 @@ public partial class MainWindow : Window
         {
             DataContext = App.Services.GetRequiredService<PetViewModel>()
         };*/
-       var page = new BreedingPage
+/*       var page = new BreedingPage
         {
             DataContext = App.Services.GetRequiredService<BreedingViewModel>()
+        };*/
+        var page = new PetSelectionPage
+        {
+            DataContext = App.Services.GetRequiredService<PetSelectionViewModel>()
         };
 
         PageContent.Content = page;

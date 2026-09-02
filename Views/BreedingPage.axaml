@@ -157,7 +157,12 @@
                 <Label x:Name="FemaleEyesLabel"
                        Content="{Binding CurrentFemalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
             </StackPanel>
-
+            <Button x:Name="SelectFemaleButton"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Content="Выбрать самку"/>
 
         </Grid>
         <Grid x:Name="RightGrid"
@@ -218,8 +223,7 @@
                 <Label x:Name="MaleSexLabel"
                        Content="{Binding CurrentMalePet.Sex, StringFormat='Пол: {0}'}"/>
                 <Label x:Name="MaleGenerationLabel"
-                       Content="{Binding CurrentMalePet
-                       .Generation, StringFormat='Поколение: {0}'}"/>
+                       Content="{Binding CurrentMalePet.Generation, StringFormat='Поколение: {0}'}"/>
                 <Label x:Name="MaleBodyLabel"
                        Content="{Binding CurrentMalePet.BodyGene, StringFormat='Тело: {0}'}"/>
                 <Label x:Name="MaleHeadLabel"
@@ -232,11 +236,5 @@
                        Content="{Binding CurrentMalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
             </StackPanel>
         </Grid>
-       
-
-
     </Grid>
-
-
-
 </UserControl>

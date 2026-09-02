@@ -1,0 +1,83 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Mendelings.Views.PetSelectionPage"
+        xmlns:vm="using:Mendelings.ViewModels"
+        x:DataType="vm:PetSelectionViewModel"
+        Title="PetSelectionPage"
+        >
+
+    <Grid x:Name="GridMainSelect"
+          ShowGridLines="True"
+          ColumnDefinitions="1*,1*"
+          RowDefinitions="1*,6*,1*"
+          Margin="10">
+            <ScrollViewer 
+                Grid.Column="0"
+                Grid.Row="1"
+                VerticalScrollBarVisibility="Auto">
+                <ListBox x:Name="PetsItemsListBox"
+                         ItemsSource="{Binding PetsItemsList}"
+                         SelectedItem="{Binding SelectPet}">
+                    
+                </ListBox>
+            </ScrollViewer>
+        <Grid Name="SelectPetGrid"
+              Grid.Column="1"
+              Grid.Row="1"
+              ColumnDefinitions="auto,1*">
+            
+                <Image x:Name="BodySelectPetImage"
+                       Source="{Binding SelectPet.ItemAppearancePets.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing"/>
+
+                <Image x:Name="HeadSelectPetImage"
+                       Source="{Binding SelectPet.ItemAppearancePets.HeadImage}"
+                       ZIndex="3"/>
+
+                <Image x:Name="TailSelectPetImage"
+                       Source="{Binding SelectPet.ItemAppearancePets.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove"/>
+
+                <Image x:Name="EyesSelectPetImage"
+                       Source="{Binding SelectPet.ItemAppearancePets.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink"/>
+
+                <Image x:Name="EyesCloseSelectPetImage"
+                       Source="{Binding SelectPet.ItemAppearancePets.EyesCloseImage}"
+                       ZIndex="4"/>
+
+                <Image x:Name="EarsSelectPetImageLeft"
+                       Source="{Binding SelectPet.ItemAppearancePets.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%"/>
+
+                <Image x:Name="EarsSelectPetImageRight"
+                       Source="{Binding SelectPet.ItemAppearancePets.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%"/>
+
+                <Image x:Name="HornsSelectPetImage"
+                       Source="{Binding SelectPet.ItemAppearancePets.HornsImage}"
+                       ZIndex="1"/>
+        </Grid>
+        <Button x:Name="SendPetButton"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Content="Выбрать"
+                Click="SendPetButton_Click"
+               
+            />
+    </Grid>
+
+</Window>

@@ -49,7 +49,8 @@ public partial class App : Application
         services.AddTransient<BreedingViewModel>();
         services.AddTransient<BreedingPage>();
         services.AddTransient<MainViewModel>();
-
+        services.AddTransient<PetSelectionViewModel>();
+        services.AddTransient<PetSelectionPage>();
 
         //Классы который будет уметь создавать
         services.AddTransient<PetRepository>();
@@ -58,6 +59,7 @@ public partial class App : Application
         services.AddTransient<GeneticsService>();
         services.AddTransient<AppearancePet>();
         services.AddTransient<AppearancePetService>();
+        services.AddTransient<PetSelectionViewModel>();
 
         // На основе зарегистрированных зависимостей
         // создаём DI-контейнер
