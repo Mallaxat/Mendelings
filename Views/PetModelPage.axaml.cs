@@ -43,7 +43,7 @@ namespace Mendelings.Views
             PetSelectionPage page = App.Services.GetRequiredService<PetSelectionPage>();
             if (page.DataContext is PetSelectionViewModel viewModel)
             {
-                await viewModel.LoadItemsPetsAsync(PetSex.Female);
+                await viewModel.LoadItemsPetsAsync();
             }
 
             if (mainWindow == null) return;

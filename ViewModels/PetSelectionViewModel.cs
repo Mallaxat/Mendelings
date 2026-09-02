@@ -52,6 +52,22 @@ namespace Mendelings.ViewModels
                 });
             }
         }
+        public async Task LoadItemsPetsAsync()
+        {
+
+            if (PetsItemsList == null) PetsItemsList = new List<PetSelectionItem>();
+            PetsList = await _petRepository.GetAllAsync();
+
+            PetsItemsList.Clear();
+            foreach (Pet pet in PetsList)
+            {
+                PetsItemsList.Add(new PetSelectionItem
+                {
+                    ItemPets = pet,
+                    ItemAppearancePets = await _apearancePetService.LoadAppearancePet(pet)
+                });
+            }
+        }
 
 
 

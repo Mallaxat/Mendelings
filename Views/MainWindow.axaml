@@ -16,11 +16,27 @@
     </Design.DataContext>
     <Grid 
         ShowGridLines="True"
-        RowDefinitions="1*,10*,1*"
-          ColumnDefinitions="1*,10*,1*">
+        RowDefinitions="1*,1*,10*,1*"
+        ColumnDefinitions="1*,10*,1*">
         <ContentControl x:Name="PageContent"
                         Grid.Column="1"
-                        Grid.Row="1"/>
+                        Grid.Row="2"/>
+        <StackPanel x:Name="ButtonsStackPanel"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Orientation="Horizontal"
+                    Spacing="5">
+            <Button x:Name="MainButton"
+                    Content="Уход за питомцем"
+                    Click="MainButton_Click"
+                    />
+            <Button x:Name="BreedingButton"
+                    Content="К разведению"
+                    Click="BreedingButton_Click"
+                    />
+            
+        </StackPanel>
+
 
   
 
