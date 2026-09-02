@@ -37,6 +37,9 @@ Mendelings.Data
 
 Mendelings.UI
 
+
+    +AppearancePet-хранит структуру картинок для петов
+    +AppearancePetService - собирает по пути картинки и переносит в  AppearancePet
     MainViewModel — навигация между экранами.
     PetsViewModel — список питомцев и выбор питомца.
     +PetViewModel — экран одного питомца

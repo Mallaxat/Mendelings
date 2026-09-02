@@ -22,7 +22,8 @@ namespace Mendelings.Core
         public int? FatherId { get; set; }
         public Pet? Father { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        [ObservableProperty]
+        private string name = string.Empty;
         public PetSex Sex { get; set; }
         
         //поколение

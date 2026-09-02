@@ -16,7 +16,6 @@ namespace Mendelings.ViewModels
     public partial class BreedingViewModel : ViewModelBase
     {
         //Ассетная часть
-        private string eyesClosePath = "avares://Mendelings/Assets/Eyes/EyesClose.png";
         [ObservableProperty]
         private Bitmap? eyesCloseImage;
 
@@ -24,6 +23,8 @@ namespace Mendelings.ViewModels
         private Pet? currentFemalePet;
         [ObservableProperty]
         private Pet? currentMalePet;
+        [ObservableProperty]
+        private Pet? childPet;
 
         //Средства для загрузок
         private readonly PetRepository _petRepository;
@@ -37,6 +38,9 @@ namespace Mendelings.ViewModels
         
         [ObservableProperty]
         private AppearancePet? appearanceMale = new AppearancePet();
+        
+        [ObservableProperty]
+        private AppearancePet? appearanceChild = new AppearancePet();
 
         public BreedingViewModel(PetRepository petRepository, PetService petService,
             GeneticsRepository geneticsRepository, GeneticsService geneticsService, AppearancePetService appearancePetService)
@@ -47,11 +51,12 @@ namespace Mendelings.ViewModels
             _petService = petService;
             _appearancePetService = appearancePetService;
         }
+        //Загрузка пета(ов)
         [RelayCommand]
         public async Task LoadPetAsync()
         {
-            int FemaleId = 2;
-            int MaleId = 1;
+            int FemaleId = 13;
+            int MaleId = 14;
             CurrentFemalePet = await _petRepository.GetByIdAsync(FemaleId);
             CurrentMalePet = await _petRepository.GetByIdAsync(MaleId);
             
@@ -60,10 +65,19 @@ namespace Mendelings.ViewModels
             
             AppearanceFemale = await _appearancePetService.LoadAppearancePet(CurrentFemalePet);
             AppearanceMale = await _appearancePetService.LoadAppearancePet(CurrentMalePet);
-
-            await _petRepository.UpdateAsync(CurrentFemalePet);
-            await _petRepository.UpdateAsync(CurrentMalePet);
         }
+        
+        [RelayCommand]
+        public async Task BreedAsync()
+        {
+            if(CurrentFemalePet == null || CurrentMalePet==null) return;
+
+            ChildPet = await _geneticsService.BreedPet(CurrentFemalePet, CurrentMalePet);
+            await _petRepository.AddAsync(ChildPet);
+            AppearanceChild = await _appearancePetService.LoadAppearancePet(ChildPet);
+
+        }
+
 
     }
 }

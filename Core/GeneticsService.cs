@@ -1,8 +1,10 @@
 ﻿using Mendelings.Data;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Mendelings.Core
 {
@@ -70,10 +72,10 @@ namespace Mendelings.Core
             return $"{allele2}{allele1}";
         }
        //создает нового питомца на основе родительских генов
-        public Pet BreedPet(Pet mother, Pet father)
+        public async Task<Pet> BreedPet(Pet mother, Pet father)
         {
             PetSex childSex = Random.Shared.Next(0, 2) == 0 ? PetSex.Male: PetSex.Female;
-
+            string Name =await GetRandomName(childSex);
             //Определить самое большое поколение и добавить 1
             int generation = Math.Max(mother.Generation, father.Generation) + 1;
 
@@ -91,9 +93,20 @@ namespace Mendelings.Core
                 .SetBodyGene(GetRandomChildGene(mother.BodyGene, father.BodyGene))
                 .SetHeadGene(GetRandomChildGene(mother.HeadGene, father.HeadGene))
                 .SetHornsGene(GetRandomChildGene(mother.HornsGene, father.HornsGene))
+                .SetName(Name)
                 .Build();
+                
 
             return child;
+        }
+
+        private async Task<string> GetRandomName(PetSex childSex)
+        {
+            string path = FileService.FindPath(childSex);
+
+            string result = await FileService.GetRandomStringAsync(path);
+
+            return result;
         }
         public string GetAssetPath(GeneticTrait trait, string genotype)
         {

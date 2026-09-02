@@ -13,22 +13,87 @@
           ColumnSpacing="10"
           Margin="10">
                 <Button Grid.Column="1"
+                        VerticalAlignment="Top"
                 Content="Update"
                 Command="{Binding LoadPetCommand}"/>
-        <Grid x:Name="CenterChieldGrid"
+                        <Button Grid.Column="0"
+                        VerticalAlignment="Top"
+                Content="Breed"
+                Command="{Binding BreedAsync}"/>
+        <Grid x:Name="CenterChildGrid"
               Grid.Column="1"
               ShowGridLines="True"
-              RowDefinitions="1*,5*,1*"
+              RowDefinitions="1*,6*,auto"
               ColumnDefinitions="1*,5*,1*"
               RowSpacing="2"
               Margin="10">
+            <Grid x:Name="ImageChildGrid"
+                  Grid.Column="1"
+                  Grid.Row="1">
+                <Image x:Name="BodyChildImage"
+                       Source="{Binding AppearanceChild.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing"/>
+
+                <Image x:Name="HeadChildImage"
+                       Source="{Binding AppearanceChild.HeadImage}"
+                       ZIndex="3"/>
+
+                <Image x:Name="TailChildImage"
+                       Source="{Binding AppearanceChild.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove"/>
+
+                <Image x:Name="EyesChildImage"
+                       Source="{Binding AppearanceChild.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink"/>
+
+                <Image x:Name="EyesCloseChildImage"
+                       Source="{Binding AppearanceChild.EyesCloseImage}"
+                       ZIndex="4"/>
+
+                <Image x:Name="EarsChildImageLeft"
+                       Source="{Binding AppearanceChild.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%"/>
+
+                <Image x:Name="EarsChildImageRight"
+                       Source="{Binding AppearanceChild.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%"/>
+
+                <Image x:Name="HornsChildImage"
+                       Source="{Binding AppearanceChild.HornsImage}"
+                       ZIndex="1"/>
+                </Grid>
+            <StackPanel x:Name="InfoChildStackPanel"
+                        Grid.Row="2"
+                        Grid.Column="1">
+                <Label x:Name="ChildNameLabel"
+                       Content="{Binding ChildPet.Name, StringFormat='Имя: {0}'}"/>
+                <Label x:Name="ChildSexLabel"
+                       Content="{Binding ChildPet.Sex, StringFormat='Пол: {0}'}"/>
+                <Label x:Name="ChildGenerationLabel"
+                       Content="{Binding ChildPet.Generation, StringFormat='Поколение: {0}'}"/>
+                <Label x:Name="ChildBodyLabel"
+                       Content="{Binding ChildPet.BodyGene, StringFormat='Тело: {0}'}"/> 
+                <Label x:Name="ChildHeadLabel"
+                       Content="{Binding ChildPet.HeadGene, StringFormat='Голова: {0}'}"/> 
+                <Label x:Name="ChildTailLabel"
+                       Content="{Binding ChildPet.TailGene, StringFormat='Хвост: {0}'}"/>
+                <Label x:Name="ChildEarsLabel"
+                       Content="{Binding ChildPet.EarsGene, StringFormat='Уши: {0}'}"/>
+                <Label x:Name="ChildEyesLabel"
+                       Content="{Binding ChildPet.EyesGene, StringFormat='Глаза: {0}'}"/>
+            </StackPanel>
         </Grid>
-
-
         <Grid x:Name="LeftFemaleGrid"
               Grid.Column="0"
               ShowGridLines="True"
-              RowDefinitions="1*,5*,1*"
+              RowDefinitions="1*,6*,auto"
               ColumnDefinitions="1*,5*,1*"
               RowSpacing="2"
               Margin="10">
@@ -71,16 +136,34 @@
                 <Image x:Name="HornsImage"
                        Source="{Binding AppearanceFemale.HornsImage}"
                        ZIndex="1"/>
-            </Grid>
-           
-
+            </Grid>        
+            <StackPanel x:Name="InfoFemaleStackPanel"
+                        Grid.Row="2"
+                        Grid.Column="1">
+                <Label x:Name="FemaleNameLabel"
+                       Content="{Binding CurrentFemalePet.Name, StringFormat='Имя: {0}'}"/>
+                <Label x:Name="FemaleSexLabel"
+                       Content="{Binding CurrentFemalePet.Sex, StringFormat='Пол: {0}'}"/>
+                <Label x:Name="FemaleGenerationLabel"
+                       Content="{Binding CurrentFemalePet.Generation, StringFormat='Поколение: {0}'}"/>
+                <Label x:Name="FemaleBodyLabel"
+                       Content="{Binding CurrentFemalePet.BodyGene, StringFormat='Тело: {0}'}"/>
+                <Label x:Name="FemaleHeadLabel"
+                       Content="{Binding CurrentFemalePet.HeadGene, StringFormat='Голова: {0}'}"/>
+                <Label x:Name="FemaleTailLabel"
+                       Content="{Binding CurrentFemalePet.TailGene, StringFormat='Хвост: {0}'}"/>
+                <Label x:Name="FemaleEarsLabel"
+                       Content="{Binding CurrentFemalePet.EarsGene, StringFormat='Уши: {0}'}"/>
+                <Label x:Name="FemaleEyesLabel"
+                       Content="{Binding CurrentFemalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
+            </StackPanel>
 
 
         </Grid>
         <Grid x:Name="RightGrid"
               Grid.Column="2"
               ShowGridLines="True"
-              RowDefinitions="1*,5*,1*"
+              RowDefinitions="1*,6*,auto"
               ColumnDefinitions="1*,5*,1*"
               RowSpacing="2"
               Margin="10">
@@ -127,7 +210,27 @@
                        Source="{Binding AppearanceMale.HornsImage}"
                        ZIndex="1"/>
                 </Grid>
-
+            <StackPanel x:Name="InfoMaleStackPanel"
+                        Grid.Row="2"
+                        Grid.Column="1">
+                <Label x:Name="MaleNameLabel"
+                       Content="{Binding CurrentMalePet.Name, StringFormat='Имя: {0}'}"/>
+                <Label x:Name="MaleSexLabel"
+                       Content="{Binding CurrentMalePet.Sex, StringFormat='Пол: {0}'}"/>
+                <Label x:Name="MaleGenerationLabel"
+                       Content="{Binding CurrentMalePet
+                       .Generation, StringFormat='Поколение: {0}'}"/>
+                <Label x:Name="MaleBodyLabel"
+                       Content="{Binding CurrentMalePet.BodyGene, StringFormat='Тело: {0}'}"/>
+                <Label x:Name="MaleHeadLabel"
+                       Content="{Binding CurrentMalePet.HeadGene, StringFormat='Голова: {0}'}"/>
+                <Label x:Name="MaleTailLabel"
+                       Content="{Binding CurrentMalePet.TailGene, StringFormat='Хвост: {0}'}"/>
+                <Label x:Name="MaleEarsLabel"
+                       Content="{Binding CurrentMalePet.EarsGene, StringFormat='Уши: {0}'}"/>
+                <Label x:Name="MaleEyesLabel"
+                       Content="{Binding CurrentMalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
+            </StackPanel>
         </Grid>
        
 

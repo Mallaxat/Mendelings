@@ -45,7 +45,7 @@ namespace Mendelings.ViewModels
         [RelayCommand]
         public async Task LoadPetAsync()
         {
-            int id = 2;
+            int id = 3;
             CurrentPet = await _petRepository.GetByIdAsync(id);
 
             if (CurrentPet == null) return;
