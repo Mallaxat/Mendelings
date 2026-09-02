@@ -1,0 +1,139 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Mendelings.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Mendelings.Views.BreedingPage"
+             x:DataType="vm:BreedingViewModel">
+
+    <Grid x:Name="MainGrid"
+          ShowGridLines="True"
+          ColumnDefinitions="1*,1*,1*"
+          ColumnSpacing="10"
+          Margin="10">
+                <Button Grid.Column="1"
+                Content="Update"
+                Command="{Binding LoadPetCommand}"/>
+        <Grid x:Name="CenterChieldGrid"
+              Grid.Column="1"
+              ShowGridLines="True"
+              RowDefinitions="1*,5*,1*"
+              ColumnDefinitions="1*,5*,1*"
+              RowSpacing="2"
+              Margin="10">
+        </Grid>
+
+
+        <Grid x:Name="LeftFemaleGrid"
+              Grid.Column="0"
+              ShowGridLines="True"
+              RowDefinitions="1*,5*,1*"
+              ColumnDefinitions="1*,5*,1*"
+              RowSpacing="2"
+              Margin="10">
+            <Grid x:Name="ImageFemaleGrid"
+                  Grid.Column="1"
+                  Grid.Row="1">
+                <Image x:Name="BodyImage"
+                       Source="{Binding AppearanceFemale.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing"/>
+                <Image x:Name="HeadImage"
+                       Source="{Binding AppearanceFemale.HeadImage}"
+                       ZIndex="3"/>
+
+                <Image x:Name="TailImage"
+                       Source="{Binding AppearanceFemale.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove"/>
+
+                <Image x:Name="EyesImage"
+                       Source="{Binding AppearanceFemale.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink"/>
+                <Image x:Name="EyesCloseImage"
+                       Source="{Binding AppearanceFemale.EyesCloseImage}"
+                       ZIndex="4"/>
+
+                <Image x:Name="EarsImageLeft"
+                       Source="{Binding AppearanceFemale.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%"
+                       /> 
+                <Image x:Name="EarsImageRight"
+                       Source="{Binding AppearanceFemale.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%" 
+                       />  
+                <Image x:Name="HornsImage"
+                       Source="{Binding AppearanceFemale.HornsImage}"
+                       ZIndex="1"/>
+            </Grid>
+           
+
+
+
+        </Grid>
+        <Grid x:Name="RightGrid"
+              Grid.Column="2"
+              ShowGridLines="True"
+              RowDefinitions="1*,5*,1*"
+              ColumnDefinitions="1*,5*,1*"
+              RowSpacing="2"
+              Margin="10">
+            <Grid x:Name="ImageMaleGrid"
+                  Grid.Column="1"
+                  Grid.Row="1">
+
+                <Image x:Name="BodyMaleImage"
+                       Source="{Binding AppearanceMale.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing"/>
+
+                <Image x:Name="HeadMaleImage"
+                       Source="{Binding AppearanceMale.HeadImage}"
+                       ZIndex="3"/>
+
+                <Image x:Name="TailMaleImage"
+                       Source="{Binding AppearanceMale.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove"/>
+
+                <Image x:Name="EyesMaleImage"
+                       Source="{Binding AppearanceMale.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink"/>
+
+                <Image x:Name="EyesCloseMaleImage"
+                       Source="{Binding AppearanceMale.EyesCloseImage}"
+                       ZIndex="4"/>
+
+                <Image x:Name="EarsMaleImageLeft"
+                       Source="{Binding AppearanceMale.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%"/>
+
+                <Image x:Name="EarsMaleImageRight"
+                       Source="{Binding AppearanceMale.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%"/>
+
+                <Image x:Name="HornsMaleImage"
+                       Source="{Binding AppearanceMale.HornsImage}"
+                       ZIndex="1"/>
+                </Grid>
+
+        </Grid>
+       
+
+
+    </Grid>
+
+
+
+</UserControl>

@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Mendelings.Core;
 using Mendelings.Data;
+using Mendelings.UI;
 using Mendelings.ViewModels;
 using Mendelings.Views;
 using Microsoft.EntityFrameworkCore;
@@ -41,18 +42,22 @@ public partial class App : Application
         //регестрация MendelingsDbContext
         services.AddDbContext<MendelingsDbContext>(
             options => options.UseSqlServer(connectionString));
+
         //Окна который будет уметь создавать
         services.AddTransient<PetViewModel>();
         services.AddTransient<PetModelPage>();
+        services.AddTransient<BreedingViewModel>();
+        services.AddTransient<BreedingPage>();
+        services.AddTransient<MainViewModel>();
+
 
         //Классы который будет уметь создавать
         services.AddTransient<PetRepository>();
         services.AddTransient<GeneticsRepository>();
-
         services.AddTransient<PetService>();
         services.AddTransient<GeneticsService>();
-
-        services.AddTransient<MainViewModel>();
+        services.AddTransient<AppearancePet>();
+        services.AddTransient<AppearancePetService>();
 
         // На основе зарегистрированных зависимостей
         // создаём DI-контейнер

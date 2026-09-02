@@ -27,6 +27,7 @@ namespace Mendelings.ViewModels
         [ObservableProperty]
         private int age;
 
+        #region AssetsProperty
         //Ассетная часть
         //путь
         [ObservableProperty]
@@ -71,7 +72,8 @@ namespace Mendelings.ViewModels
         private string hornsAssetPath = string.Empty;
         [ObservableProperty]
         private Bitmap? hornsImage;
-
+        #endregion
+       
         public PetViewModel(PetRepository petRepository,PetService petService, 
             GeneticsRepository geneticRepository, GeneticsService geneticService)
         {
@@ -144,7 +146,7 @@ namespace Mendelings.ViewModels
 
 
             //обновление текущего питомца
-            [RelayCommand]
+        [RelayCommand]
         public async Task RefreshStateAsync()
         {
             if(CurrentPet == null) return;
