@@ -8,8 +8,13 @@
     <Application.DataTemplates>
         <local:ViewLocator />
     </Application.DataTemplates>
-
+    
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="/Styles/Animations/Blink.axaml" />
+        <StyleInclude Source="/Styles/Animations/Breathing.axaml" />
+        <StyleInclude Source="/Styles/Animations/EarsMoveLeft.axaml" />
+        <StyleInclude Source="/Styles/Animations/EarsMoveRight.axaml" />
+         <StyleInclude Source="/Styles/Animations/TailMove.axaml" />
     </Application.Styles>
 </Application>

@@ -185,7 +185,8 @@
 
             <Image x:Name="BodyImage"
                    Source="{Binding BodyImage}"
-                   ZIndex="2">
+                   ZIndex="2"
+                   Classes="Breathing">
             </Image>
             <Image x:Name="HeadImage"
                    Source="{Binding HeadImage}"
@@ -194,17 +195,33 @@
 
             <Image x:Name="TailImage"
                    Source="{Binding TailImage}"
-                   ZIndex="1">
+                   ZIndex="1"
+                   Classes="TailMove">
             </Image>
 
             <Image x:Name="EyesImage"
                    Source="{Binding EyesImage}"
+                   ZIndex="5"
+                   Classes="Blink AutoBlink">
+            </Image>
+            <Image x:Name="EyesCloseImage"
+                   Source="{Binding EyesCloseImage}"
                    ZIndex="4">
             </Image>
 
-            <Image x:Name="EarsImage"
-                   Source="{Binding EarsImage}"
-                   ZIndex="2">
+            <Image x:Name="EarsImageLeft"
+                   Source="{Binding EarsLeftImage}"
+                   ZIndex="2"
+                   Classes="EarLeftMove"
+                   RenderTransformOrigin="38%,22%"
+                   >
+            </Image>
+            <Image x:Name="EarsImageRight"
+                   Source="{Binding EarsRightImage}"
+                   ZIndex="2"
+                   Classes="EarRightMove"
+                   RenderTransformOrigin="62%,22%" 
+                   >
             </Image>
 
             <Image x:Name="HornsImage"

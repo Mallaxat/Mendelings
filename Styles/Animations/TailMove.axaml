@@ -1,0 +1,49 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+      <Style Selector="Image.TailMove">
+
+        <Setter Property="RenderTransform">
+            <RotateTransform Angle="0" />
+        </Setter>
+
+        <Style.Animations>
+            <Animation Duration="0:0:5"
+                       IterationCount="INFINITE"
+                       Easing="SineEaseInOut">
+
+                <!-- Исходное положение -->
+                <KeyFrame Cue="0%">
+                    <Setter Property="RotateTransform.Angle"
+                            Value="0" />
+                </KeyFrame>
+
+                <!-- Большую часть времени хвост неподвижен -->
+                <KeyFrame Cue="65%">
+                    <Setter Property="RotateTransform.Angle"
+                            Value="0" />
+                </KeyFrame>
+
+                <!-- Кончик слегка поднимается -->
+                <KeyFrame Cue="82%">
+                    <Setter Property="RotateTransform.Angle"
+                            Value="-2" />
+                </KeyFrame>
+
+                <!-- Возвращается -->
+                <KeyFrame Cue="100%">
+                    <Setter Property="RotateTransform.Angle"
+                            Value="0" />
+                </KeyFrame>
+
+            </Animation>
+        </Style.Animations>
+
+    </Style>
+</Styles>

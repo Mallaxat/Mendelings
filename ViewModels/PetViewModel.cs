@@ -50,10 +50,22 @@ namespace Mendelings.ViewModels
         [ObservableProperty]
         private Bitmap? eyesImage;
 
+        private string eyesClosePath = "avares://Mendelings/Assets/Eyes/EyesClose.png";
+        [ObservableProperty]
+        private Bitmap? eyesCloseImage;
+
         [ObservableProperty]
         private string earsAssetPath = string.Empty;
+
         [ObservableProperty]
-        private Bitmap? earsImage;
+        private string earsLeftAssetPath;
+        [ObservableProperty]
+        private Bitmap? earsLeftImage;
+
+        [ObservableProperty]
+        private string earsRightAssetPath;
+        [ObservableProperty]
+        private Bitmap? earsRightImage;
 
         [ObservableProperty]
         private string hornsAssetPath = string.Empty;
@@ -81,12 +93,16 @@ namespace Mendelings.ViewModels
             Age=_petService.GetAge(CurrentPet);
 
             await LoadGenetic();
+            EarsLeftAssetPath = EarsAssetPath;
+            EarsRightAssetPath = EarsAssetPath;
 
             BodyImage = LoadImage(BodyAssetPath);
+            EyesCloseImage = LoadImage(eyesClosePath);
             HeadImage = LoadImage(HeadAssetPath);
             TailImage = LoadImage(TailAssetPath);
             EyesImage = LoadImage(EyesAssetPath);
-            EarsImage = LoadImage(EarsAssetPath);
+            EarsLeftImage = LoadImage(EarsLeftAssetPath.Replace(".png", "Left.png"));
+            EarsRightImage = LoadImage(EarsRightAssetPath.Replace(".png", "Right.png"));
             HornsImage = LoadImage(HornsAssetPath);
 
             await _petRepository.UpdateAsync(CurrentPet);
