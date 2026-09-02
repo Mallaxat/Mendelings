@@ -12,14 +12,7 @@
           ColumnDefinitions="1*,1*,1*"
           ColumnSpacing="10"
           Margin="10">
-                <Button Grid.Column="1"
-                        VerticalAlignment="Top"
-                Content="Update"
-                Command="{Binding LoadPetCommand}"/>
-                        <Button Grid.Column="0"
-                        VerticalAlignment="Top"
-                Content="Breed"
-                Command="{Binding BreedAsync}"/>
+        
         <Grid x:Name="CenterChildGrid"
               Grid.Column="1"
               ShowGridLines="True"
@@ -27,6 +20,12 @@
               ColumnDefinitions="1*,5*,1*"
               RowSpacing="2"
               Margin="10">
+            <Button Grid.Column="1"
+                Grid.Row="0"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Content="Вывести"
+                Command="{Binding BreedAsync}"/>
             <Grid x:Name="ImageChildGrid"
                   Grid.Column="1"
                   Grid.Row="1">
@@ -236,6 +235,14 @@
                 <Label x:Name="MaleEyesLabel"
                        Content="{Binding CurrentMalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
             </StackPanel>
+            <Button x:Name="SelectMaleButton"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Content="Выбрать самца"
+                    Click="SelectMaleButton_Click"/>
+        
         </Grid>
     </Grid>
 </UserControl>

@@ -53,20 +53,19 @@ namespace Mendelings.ViewModels
         }
         //Загрузка пета(ов)
         [RelayCommand]
-        public async Task LoadPetAsync()
+        public async Task LoadPetAsync(Pet CurrentPet)
         {
-            int FemaleId = 13;
-            int MaleId = 14;
-            CurrentFemalePet = await _petRepository.GetByIdAsync(FemaleId);
-            CurrentMalePet = await _petRepository.GetByIdAsync(MaleId);
-            
-            if (CurrentFemalePet == null || CurrentMalePet == null)
+            CurrentPet = await _petRepository.GetByIdAsync(CurrentPet.Id);
+           
+            if (CurrentPet == null )
                 return;
-            
-            AppearanceFemale = await _appearancePetService.LoadAppearancePet(CurrentFemalePet);
-            AppearanceMale = await _appearancePetService.LoadAppearancePet(CurrentMalePet);
+            if(CurrentPet.Sex==PetSex.Female)
+                AppearanceFemale = await _appearancePetService.LoadAppearancePet(CurrentPet);
+            else
+                AppearanceMale = await _appearancePetService.LoadAppearancePet(CurrentPet);
+
         }
-        
+
         [RelayCommand]
         public async Task BreedAsync()
         {

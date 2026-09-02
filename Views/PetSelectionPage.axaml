@@ -34,9 +34,12 @@
         </ListBox>
       
         <Grid Name="SelectPetGrid"
+              ShowGridLines="True"
               Grid.Column="1"
               Grid.Row="1"
               ColumnDefinitions="auto,1*">
+            <Grid x:Name="ImagePetGrid"
+                  Grid.Column="0">
                 <Image x:Name="BodySelectPetImage"
                        Source="{Binding SelectPet.ItemAppearancePets.BodyImage}"
                        ZIndex="2"
@@ -75,6 +78,27 @@
                 <Image x:Name="HornsSelectPetImage"
                        Source="{Binding SelectPet.ItemAppearancePets.HornsImage}"
                        ZIndex="1"/>
+
+                </Grid>
+            <StackPanel x:Name="InfoStackPanel"
+                        Grid.Column="1">
+                <Label x:Name="SelectNameLabel"
+                       Content="{Binding SelectPet.ItemPets.Name, StringFormat='Имя: {0}'}"/>
+                <Label x:Name="SelectSexLabel"
+                       Content="{Binding SelectPet.ItemPets.Sex, StringFormat='Пол: {0}'}"/>
+                <Label x:Name="SelectGenerationLabel"
+                       Content="{Binding SelectPet.ItemPets.Generation, StringFormat='Поколение: {0}'}"/>
+                <Label x:Name="SelectBodyLabel"
+                       Content="{Binding SelectPet.ItemPets.BodyGene, StringFormat='Тело: {0}'}"/> 
+                <Label x:Name="SelectHeadLabel"
+                       Content="{Binding SelectPet.ItemPets.HeadGene, StringFormat='Голова: {0}'}"/> 
+                <Label x:Name="SelectTailLabel"
+                       Content="{Binding SelectPet.ItemPets.TailGene, StringFormat='Хвост: {0}'}"/>
+                <Label x:Name="SelectEarsLabel"
+                       Content="{Binding SelectPet.ItemPets.EarsGene, StringFormat='Уши: {0}'}"/>
+                <Label x:Name="SelectEyesLabel"
+                       Content="{Binding SelectPet.ItemPets.EyesGene, StringFormat='Глаза: {0}'}"/>
+            </StackPanel>
         </Grid>
         <Button x:Name="SendPetButton"
                 Grid.Row="2"

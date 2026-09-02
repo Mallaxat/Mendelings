@@ -10,6 +10,7 @@ namespace Mendelings.Views
 {
     public partial class PetSelectionPage : Window
     {
+        private PetSelectionItem returnPet;
         public PetSelectionPage()
         {
             InitializeComponent();
@@ -21,7 +22,9 @@ namespace Mendelings.Views
 
         private void SendPetButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-
+            if(PetsItemsListBox.SelectedItem!=null)
+                returnPet = (PetSelectionItem)PetsItemsListBox.SelectedItem;
+            Close(returnPet.ItemPets);
         }
 
         private void PetItem_Tapped(object? sender, Avalonia.Input.TappedEventArgs e)
