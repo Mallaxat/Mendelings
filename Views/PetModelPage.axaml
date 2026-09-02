@@ -231,9 +231,10 @@
         </Grid>
 
 
-        <Button Grid.Column="1"
-                Content="Update"
-                Command="{Binding LoadPetCommand}"/>
+        <Button Grid.Column="2"
+                Content="Выбрать любимца"
+                Click="Button_Click"/>
+
         <Button Grid.Column="1"
                 Content="Refresh"
                 Command="{Binding RefreshStateCommand}"

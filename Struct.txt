@@ -26,8 +26,7 @@ Mendelings.Core
     +GeneticTrait — описание одного генетического признака.
     +GeneticsService — генетическая логика
     +PetService — игрова логика(сон, еда и тд)
-    BreedingResult — простой вспомогательный класс результата скрещивания.
-
+  
 Mendelings.Data
 
     +MendelingsDbContext — Контекст для CodeFirst
@@ -37,12 +36,11 @@ Mendelings.Data
 
 Mendelings.UI
 
-
     +AppearancePet-хранит структуру картинок для петов
     +AppearancePetService - собирает по пути картинки и переносит в  AppearancePet
     MainViewModel — навигация между экранами.
-    PetsViewModel — список питомцев и выбор питомца.
-    +PetViewModel — экран одного питомца
-    BreedingViewModel — выбор двух родителей,
+    +PetsSelectModel — список питомцев и выбор питомца.
+    +PetViewModel — экран одного питомца + тамагочи
+    +BreedingViewModel — выведение питомца
     GeneticsViewModel — генетическая лаборатория
     FamilyTreeViewModel — родословная

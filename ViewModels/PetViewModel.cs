@@ -43,10 +43,10 @@ namespace Mendelings.ViewModels
         }
         //загружаем пета и обновляем
         [RelayCommand]
-        public async Task LoadPetAsync()
+        public async Task LoadPetAsync(Pet current)
         {
-            int id = 3;
-            CurrentPet = await _petRepository.GetByIdAsync(id);
+            if(current == null) current=new Pet();
+            CurrentPet = await _petRepository.GetByIdAsync(current.Id);
 
             if (CurrentPet == null) return;
 
@@ -106,5 +106,6 @@ namespace Mendelings.ViewModels
             _petService.Heal(CurrentPet);
             await _petRepository.UpdateAsync(CurrentPet);
         }
+
     }
 }

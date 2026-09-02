@@ -98,6 +98,15 @@
                        Content="{Binding SelectPet.ItemPets.EarsGene, StringFormat='Уши: {0}'}"/>
                 <Label x:Name="SelectEyesLabel"
                        Content="{Binding SelectPet.ItemPets.EyesGene, StringFormat='Глаза: {0}'}"/>
+                <Label x:Name="SelectHealthLabel"
+                       Content="{Binding SelectPet.ItemPets.Health, StringFormat='Здоровье: {0}'}"/>
+                <Label x:Name="SelectHungryLabel"
+                       Content="{Binding SelectPet.ItemPets.Hunger, StringFormat='Голод: {0}'}"/>
+                <Label x:Name="SelectMoodLabel"
+                       Content="{Binding SelectPet.ItemPets.Mood, StringFormat='Настроение: {0}'}"/>
+                <Label x:Name="SelectSleepLabel"
+                       Content="{Binding SelectPet.ItemPets.IsSleeping, StringFormat='Спит: {0}'}"/>
+
             </StackPanel>
         </Grid>
         <Button x:Name="SendPetButton"
