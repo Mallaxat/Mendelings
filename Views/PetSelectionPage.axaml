@@ -14,21 +14,29 @@
           ColumnDefinitions="1*,1*"
           RowDefinitions="1*,6*,1*"
           Margin="10">
-            <ScrollViewer 
-                Grid.Column="0"
-                Grid.Row="1"
-                VerticalScrollBarVisibility="Auto">
-                <ListBox x:Name="PetsItemsListBox"
-                         ItemsSource="{Binding PetsItemsList}"
-                         SelectedItem="{Binding SelectPet}">
-                    
-                </ListBox>
-            </ScrollViewer>
+   
+        <ListBox x:Name="PetsItemsListBox"
+                 Grid.Column="0"
+                 Grid.Row="1"
+                 ItemsSource="{Binding PetsItemsList}"
+                 SelectedItem="{Binding SelectPet, Mode=TwoWay}">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="8"
+                            Background="Transparent"
+                            Tapped="PetItem_Tapped">
+                        <TextBlock Text="{Binding ItemPets.Name}"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+      
         <Grid Name="SelectPetGrid"
               Grid.Column="1"
               Grid.Row="1"
               ColumnDefinitions="auto,1*">
-            
                 <Image x:Name="BodySelectPetImage"
                        Source="{Binding SelectPet.ItemAppearancePets.BodyImage}"
                        ZIndex="2"

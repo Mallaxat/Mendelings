@@ -16,7 +16,6 @@ namespace Mendelings.Views
         }
         public BreedingPage(BreedingViewModel context) :this()
         {
-    
             DataContext = context;
         }
         private async void SelectFemaleButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

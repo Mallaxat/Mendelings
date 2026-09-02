@@ -22,8 +22,10 @@ namespace Mendelings.ViewModels
 
         [ObservableProperty]
         private List<PetSelectionItem> petsItemsList;
+        
         [ObservableProperty]
-        private PetSelectionItem selectPet;
+        private PetSelectionItem? selectPet;
+
 
         public PetSelectionViewModel(PetRepository petRepository, AppearancePetService apearancePetService)
         {
@@ -33,6 +35,7 @@ namespace Mendelings.ViewModels
 
         public async Task LoadItemsPetsAsync(PetSex sex)
         {
+
             if (PetsItemsList == null) PetsItemsList = new List<PetSelectionItem>();            
             PetsList = await _petRepository.GetAllAsync();
 
