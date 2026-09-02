@@ -162,7 +162,8 @@
                     Grid.Row="0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    Content="Выбрать самку"/>
+                    Content="Выбрать самку"
+                    Click="SelectFemaleButton_Click"/>
 
         </Grid>
         <Grid x:Name="RightGrid"

@@ -10,12 +10,17 @@ namespace Mendelings.Views
 {
     public partial class PetSelectionPage : Window
     {
-        public PetSelectionPage(PetSelectionViewModel context)
+        public PetSelectionPage()
         {
             InitializeComponent();
-            DataContext= context;
+        }
+        public PetSelectionPage(PetSelectionViewModel context) :this ()
+        {
+            DataContext = context;
         }
 
-
+        private void SendPetButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+        }
     }
 }

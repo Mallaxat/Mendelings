@@ -33,6 +33,7 @@ namespace Mendelings.ViewModels
 
         public async Task LoadItemsPetsAsync(PetSex sex)
         {
+            if (PetsItemsList == null) PetsItemsList = new List<PetSelectionItem>();            
             PetsList = await _petRepository.GetAllAsync();
 
             PetsList = PetsList.Where(x => x.Sex == sex).ToList();

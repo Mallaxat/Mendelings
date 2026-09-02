@@ -14,19 +14,29 @@ namespace Mendelings.Views
         {
             InitializeComponent();
         }
-        private async Task SendPetButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        public BreedingPage(BreedingViewModel context) :this()
         {
-            Window? mainWindow= TopLevel.GetTopLevel(this) as Window;
+    
+            DataContext = context;
+        }
+        private async void SelectFemaleButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Window? mainWindow = TopLevel.GetTopLevel(this) as Window;
             //Создаем окно
             PetSelectionPage page = App.Services.GetRequiredService<PetSelectionPage>();
+            
             if (page.DataContext is PetSelectionViewModel viewModel)
             {
-                await viewModel.Load
+                await viewModel.LoadItemsPetsAsync(PetSex.Female);
             }
-            await page.ShowDialog<Pet>(mainWindow);
 
-
-
+            if (mainWindow == null) return;
+            Pet? resultSelect = await page.ShowDialog<Pet?>(mainWindow);
+            
+            if (resultSelect != null && DataContext is BreedingViewModel MyViewModel)
+            {
+                MyViewModel.CurrentFemalePet = resultSelect;
+            }
         }
     }
 }
