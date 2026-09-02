@@ -14,7 +14,7 @@ public partial class MainWindow : Window
         {
             DataContext = App.Services.GetRequiredService<PetViewModel>()
         };*/
-        var page = new BreedingPage
+       var page = new BreedingPage
         {
             DataContext = App.Services.GetRequiredService<BreedingViewModel>()
         };

@@ -184,40 +184,40 @@
               Grid.Column="1">
 
             <Image x:Name="BodyImage"
-                   Source="{Binding BodyImage}"
+                   Source="{Binding AppearanceCurrent.BodyImage}"
                    ZIndex="2"
                    Classes="Breathing">
             </Image>
             <Image x:Name="HeadImage"
-                   Source="{Binding HeadImage}"
+                   Source="{Binding AppearanceCurrent.HeadImage}"
                    ZIndex="3">
             </Image>
 
             <Image x:Name="TailImage"
-                   Source="{Binding TailImage}"
+                   Source="{Binding AppearanceCurrent.TailImage}"
                    ZIndex="1"
                    Classes="TailMove">
             </Image>
 
             <Image x:Name="EyesImage"
-                   Source="{Binding EyesImage}"
+                   Source="{Binding AppearanceCurrent.EyesImage}"
                    ZIndex="5"
                    Classes="Blink AutoBlink">
             </Image>
             <Image x:Name="EyesCloseImage"
-                   Source="{Binding EyesCloseImage}"
+                   Source="{Binding AppearanceCurrent.EyesCloseImage}"
                    ZIndex="4">
             </Image>
 
             <Image x:Name="EarsImageLeft"
-                   Source="{Binding EarsLeftImage}"
+                   Source="{Binding AppearanceCurrent.EarsLeftImage}"
                    ZIndex="2"
                    Classes="EarLeftMove"
                    RenderTransformOrigin="38%,22%"
                    >
             </Image>
             <Image x:Name="EarsImageRight"
-                   Source="{Binding EarsRightImage}"
+                   Source="{Binding AppearanceCurrent.EarsRightImage}"
                    ZIndex="2"
                    Classes="EarRightMove"
                    RenderTransformOrigin="62%,22%" 
@@ -225,7 +225,7 @@
             </Image>
 
             <Image x:Name="HornsImage"
-                   Source="{Binding HornsImage}"
+                   Source="{Binding AppearanceCurrent.HornsImage}"
                    ZIndex="1">
             </Image>
         </Grid>
