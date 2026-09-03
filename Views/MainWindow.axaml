@@ -3,21 +3,20 @@
         xmlns:vm="using:Mendelings.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="500"
         x:Class="Mendelings.Views.MainWindow"
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Mendelings">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
+
     <Grid 
         ShowGridLines="True"
-        RowDefinitions="1*,1*,10*,1*"
-        ColumnDefinitions="1*,10*,1*">
+        RowDefinitions="0.5*,1*,10*,0.5*"
+        ColumnDefinitions="0.5*,10*,0.5*">
         <ContentControl x:Name="PageContent"
                         Grid.Column="1"
                         Grid.Row="2"/>
@@ -33,6 +32,10 @@
             <Button x:Name="BreedingButton"
                     Content="К разведению"
                     Click="BreedingButton_Click"
+                    />
+            <Button x:Name="FamilyButton"
+                    Content="К древу"
+                    Click="FamilyButton_Click"
                     />
             
         </StackPanel>

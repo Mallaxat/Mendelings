@@ -71,7 +71,7 @@ namespace Mendelings.Core
 
             return $"{allele2}{allele1}";
         }
-       //создает нового питомца на основе родительских генов
+        //создает нового питомца на основе родительских генов
         public async Task<Pet> BreedPet(Pet mother, Pet father)
         {
             PetSex childSex = Random.Shared.Next(0, 2) == 0 ? PetSex.Male: PetSex.Female;
@@ -99,7 +99,6 @@ namespace Mendelings.Core
 
             return child;
         }
-
         private async Task<string> GetRandomName(PetSex childSex)
         {
             string path = FileService.FindPath(childSex);

@@ -12,6 +12,7 @@ namespace Mendelings.Data
     public class PetRepository
     {
         private readonly MendelingsDbContext _context;
+
         public PetRepository(MendelingsDbContext context)
         {
             _context = context;
@@ -97,7 +98,6 @@ namespace Mendelings.Data
                 .ToListAsync();
             return result;
         }
-
         public async Task<List<Pet>> GetParentsAsync(int petId) 
         {
             Pet? pet = await _context.Pets.FirstOrDefaultAsync(p => p.Id == petId);
@@ -111,14 +111,12 @@ namespace Mendelings.Data
             return parents;
 
         }
-
         public async Task<List<Pet>> GetByGenerationAsync(int generation)
         {
             return await _context.Pets
                 .Where(p => p.Generation == generation)
                 .ToListAsync();
         }
-
         public async Task<bool> ExistsAsync(int id)
         {
             return await _context.Pets.AnyAsync(p => p.Id == id);

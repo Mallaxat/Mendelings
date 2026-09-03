@@ -60,6 +60,7 @@ namespace Mendelings.Views
         {
             if (this.DataContext is PetViewModel viewModel)
             {
+                if (viewModel.CurrentPet == null) return;
                 if(viewModel.CurrentPet.IsSleeping==true)
                     await Sleep();
                 else

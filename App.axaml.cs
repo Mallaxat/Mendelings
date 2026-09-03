@@ -41,7 +41,8 @@ public partial class App : Application
 
         //регестрация MendelingsDbContext
         services.AddDbContext<MendelingsDbContext>(
-            options => options.UseSqlServer(connectionString));
+            options => options.UseSqlServer(connectionString),
+            contextLifetime: ServiceLifetime.Transient);
 
         //Окна который будет уметь создавать
         services.AddTransient<PetViewModel>();
@@ -51,6 +52,7 @@ public partial class App : Application
         services.AddTransient<MainViewModel>();
         services.AddTransient<PetSelectionViewModel>();
         services.AddTransient<PetSelectionPage>();
+        services.AddTransient<FamilyTreeModel>();
 
         //Классы который будет уметь создавать
         services.AddTransient<PetRepository>();
@@ -60,6 +62,7 @@ public partial class App : Application
         services.AddTransient<AppearancePet>();
         services.AddTransient<AppearancePetService>();
         services.AddTransient<PetSelectionViewModel>();
+        services.AddTransient<FamilyTreePage>();
 
         // На основе зарегистрированных зависимостей
         // создаём DI-контейнер

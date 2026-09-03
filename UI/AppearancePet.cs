@@ -6,16 +6,31 @@ using System.Text;
 
 namespace Mendelings.UI
 {
-    public partial class AppearancePet
+    public partial class AppearancePet : ObservableObject
 
     {
-        public Bitmap? BodyImage { get; set; }
-        public Bitmap? HeadImage { get; set; }
-        public Bitmap? TailImage { get; set; }
-        public Bitmap? EyesImage { get; set; }
-        public Bitmap? EyesCloseImage { get; set; }
-        public Bitmap? EarsLeftImage { get; set; }
-        public Bitmap? EarsRightImage { get; set; }
-        public Bitmap? HornsImage { get; set; }
+        [ObservableProperty]
+        private Bitmap? bodyImage;
+
+        [ObservableProperty]
+        private Bitmap? headImage;
+
+        [ObservableProperty]
+        private Bitmap? tailImage;
+
+        [ObservableProperty]
+        private Bitmap? eyesImage;
+
+        [ObservableProperty]
+        private Bitmap? eyesCloseImage;
+
+        [ObservableProperty]
+        private Bitmap? earsLeftImage;
+
+        [ObservableProperty]
+        private Bitmap? earsRightImage;
+
+        [ObservableProperty]
+        private Bitmap? hornsImage;
     }
 }

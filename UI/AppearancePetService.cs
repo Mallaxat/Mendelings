@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Mendelings.UI
 {
-    public partial class AppearancePetService
+    public  partial class AppearancePetService
 
     {
         private string eyesClosePath = "avares://Mendelings/Assets/Eyes/EyesClose.png";

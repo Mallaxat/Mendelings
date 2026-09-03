@@ -1,0 +1,354 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Mendelings.Views.FamilyTreePage"
+             xmlns:vm="using:Mendelings.ViewModels"
+             xmlns:core="using:Mendelings.Core"
+             x:DataType="vm:FamilyTreeModel">
+
+    <Grid x:Name="MainGridFamilyTree"
+          ShowGridLines="True"
+          ColumnDefinitions="1*,1*,1*"
+          ColumnSpacing="5"
+          RowDefinitions="1*,1*,1*"
+          RowSpacing="5"
+          Margin="5">
+        <Grid x:Name="MotherGrid"
+              ShowGridLines="True"
+              Grid.Column="0"
+              Grid.Row="0"
+              ColumnDefinitions="1*,1*,1.5*"
+              ColumnSpacing="2"
+              >
+            <Grid x:Name="ImageMotherGrid"
+                  Grid.Column="2">
+                <Image x:Name="BodyMotherImage"
+                       Source="{Binding MotherPet.ItemAppearancePets.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing">
+                </Image>
+                <Image x:Name="HeadMotherImage"
+                       Source="{Binding MotherPet.ItemAppearancePets.HeadImage}"
+                       ZIndex="3">
+                </Image>
+
+                <Image x:Name="TailMotherImage"
+                       Source="{Binding MotherPet.ItemAppearancePets.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove">
+                </Image>
+
+                <Image x:Name="EyesMotherImage"
+                       Source="{Binding MotherPet.ItemAppearancePets.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink">
+                </Image>
+                <Image x:Name="EyesMotherCloseImage"
+                       Source="{Binding MotherPet.ItemAppearancePets.EyesCloseImage}"
+                       ZIndex="4">
+                </Image>
+
+                <Image x:Name="EarsMotherImageLeft"
+                       Source="{Binding MotherPet.ItemAppearancePets.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%"
+                       >
+                </Image>
+                <Image x:Name="EarsMotherImageRight"
+                       Source="{Binding MotherPet.ItemAppearancePets.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%" 
+                       >
+                </Image>
+
+                <Image x:Name="HornsMotherImage"
+                       Source="{Binding MotherPet.ItemAppearancePets.HornsImage}"
+                       ZIndex="1">
+                </Image>
+
+                </Grid>
+            <StackPanel x:Name="InfoMotherStackPanel"
+                        Grid.Column="0">
+                <Label x:Name="SelectNameLabel"
+                       Content="{Binding MotherPet.ItemPets.Name, StringFormat='Имя: {0}'}"/>
+                <Label x:Name="SelectSexLabel"
+                       Content="{Binding MotherPet.ItemPets.Sex, StringFormat='Пол: {0}'}"/>
+                <Label x:Name="SelectGenerationLabel"
+                       Content="{Binding MotherPet.ItemPets.Generation, StringFormat='Поколение: {0}'}"/>
+            </StackPanel>
+            <StackPanel x:Name="InfoMotherStackPanel2"
+                        Grid.Column="1">
+                <Label x:Name="SelectBodyLabel"
+                       Content="{Binding MotherPet.ItemPets.BodyGene, StringFormat='Тело: {0}'}"/> 
+                <Label x:Name="SelectHeadLabel"
+                       Content="{Binding MotherPet.ItemPets.HeadGene, StringFormat='Голова: {0}'}"/> 
+                <Label x:Name="SelectTailLabel"
+                       Content="{Binding MotherPet.ItemPets.TailGene, StringFormat='Хвост: {0}'}"/>
+                <Label x:Name="SelectEarsLabel"
+                       Content="{Binding MotherPet.ItemPets.EarsGene, StringFormat='Уши: {0}'}"/>
+                <Label x:Name="SelectEyesLabel"
+                       Content="{Binding MotherPet.ItemPets.EyesGene, StringFormat='Глаза: {0}'}"/>
+            </StackPanel>
+
+        </Grid>
+        <Grid x:Name="FatherGrid"
+              ShowGridLines="True"
+              Grid.Column="2"
+              Grid.Row="0"
+              ColumnDefinitions="1.5*,1*,1*"
+              ColumnSpacing="2"
+             >
+            
+            <Grid x:Name="ImageFatherGrid"
+                  Grid.Column="0">
+                <Image x:Name="BodyFatherImage"
+                       Source="{Binding FatherPet.ItemAppearancePets.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing"/>
+
+                <Image x:Name="HeadFatherImage"
+                       Source="{Binding FatherPet.ItemAppearancePets.HeadImage}"
+                       ZIndex="3"/>
+           
+                <Image x:Name="TailFatherImage"
+                       Source="{Binding FatherPet.ItemAppearancePets.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove"/>
+
+                <Image x:Name="EyesFatherImage"
+                       Source="{Binding FatherPet.ItemAppearancePets.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink"/>
+
+                <Image x:Name="EyesFatherCloseImage"
+                       Source="{Binding FatherPet.ItemAppearancePets.EyesCloseImage}"
+                       ZIndex="4"/>
+
+                <Image x:Name="EarsFatherImageLeft"
+                       Source="{Binding FatherPet.ItemAppearancePets.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%"/>
+
+                <Image x:Name="EarsFatherImageRight"
+                       Source="{Binding FatherPet.ItemAppearancePets.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%">
+                </Image>
+
+                <Image x:Name="HornsFatherImage"
+                       Source="{Binding FatherPet.ItemAppearancePets.HornsImage}"
+                       ZIndex="1"/>
+            </Grid>
+
+            <StackPanel x:Name="InfoFatherStackPanel"
+                        Grid.Column="1">
+
+                <Label x:Name="FatherSelectNameLabel"
+                       Content="{Binding FatherPet.ItemPets.Name, StringFormat='Имя: {0}'}"/>
+
+                <Label x:Name="FatherSelectSexLabel"
+                       Content="{Binding FatherPet.ItemPets.Sex, StringFormat='Пол: {0}'}"/>
+
+                <Label x:Name="FatherSelectGenerationLabel"
+                       Content="{Binding FatherPet.ItemPets.Generation, StringFormat='Поколение: {0}'}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Label x:Name="FatherSelectBodyLabel"
+                       Content="{Binding FatherPet.ItemPets.BodyGene, StringFormat='Тело: {0}'}"/>
+
+                <Label x:Name="FatherSelectHeadLabel"
+                       Content="{Binding FatherPet.ItemPets.HeadGene, StringFormat='Голова: {0}'}"/>
+
+                <Label x:Name="FatherSelectTailLabel"
+                       Content="{Binding FatherPet.ItemPets.TailGene, StringFormat='Хвост: {0}'}"/>
+
+                <Label x:Name="FatherSelectEarsLabel"
+                       Content="{Binding FatherPet.ItemPets.EarsGene, StringFormat='Уши: {0}'}"/>
+
+                <Label x:Name="FatherSelectEyesLabel"
+                       Content="{Binding FatherPet.ItemPets.EyesGene, StringFormat='Глаза: {0}'}"/>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="CurrentGrid"
+              ShowGridLines="True"
+              Grid.Column="1"
+              Grid.Row="1"
+              ColumnDefinitions="1.5*,1*,1*"
+              ColumnSpacing="2">
+    
+            <Grid x:Name="ImageCurrentGrid"
+                  Grid.Column="0">
+
+                <Image x:Name="BodyCurrentImage"
+                       Source="{Binding CurrentPet.ItemAppearancePets.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing">
+                </Image>
+
+                <Image x:Name="HeadCurrentImage"
+                       Source="{Binding CurrentPet.ItemAppearancePets.HeadImage}"
+                       ZIndex="3">
+                </Image>
+
+                <Image x:Name="TailCurrentImage"
+                       Source="{Binding CurrentPet.ItemAppearancePets.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove">
+                </Image>
+
+                <Image x:Name="EyesCurrentImage"
+                       Source="{Binding CurrentPet.ItemAppearancePets.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink">
+                </Image>
+
+                <Image x:Name="EyesCurrentCloseImage"
+                       Source="{Binding CurrentPet.ItemAppearancePets.EyesCloseImage}"
+                       ZIndex="4">
+                </Image>
+
+                <Image x:Name="EarsCurrentImageLeft"
+                       Source="{Binding CurrentPet.ItemAppearancePets.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%">
+                </Image>
+
+                <Image x:Name="EarsCurrentImageRight"
+                       Source="{Binding CurrentPet.ItemAppearancePets.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%">
+                </Image>
+
+                <Image x:Name="HornsCurrentImage"
+                       Source="{Binding CurrentPet.ItemAppearancePets.HornsImage}"
+                       ZIndex="1">
+                </Image>
+
+            </Grid>
+
+            <StackPanel x:Name="InfoCurrentStackPanel"
+                        Grid.Column="1">
+
+                <Label x:Name="CurrentSelectNameLabel"
+                       Content="{Binding CurrentPet.ItemPets.Name, StringFormat='Имя: {0}'}"/>
+
+                <Label x:Name="CurrentSelectSexLabel"
+                       Content="{Binding CurrentPet.ItemPets.Sex, StringFormat='Пол: {0}'}"/>
+
+                <Label x:Name="CurrentSelectGenerationLabel"
+                       Content="{Binding CurrentPet.ItemPets.Generation, StringFormat='Поколение: {0}'}"/>
+
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Label x:Name="CurrentSelectBodyLabel"
+                       Content="{Binding CurrentPet.ItemPets.BodyGene, StringFormat='Тело: {0}'}"/>
+
+                <Label x:Name="CurrentSelectHeadLabel"
+                       Content="{Binding CurrentPet.ItemPets.HeadGene, StringFormat='Голова: {0}'}"/>
+
+                <Label x:Name="CurrentSelectTailLabel"
+                       Content="{Binding CurrentPet.ItemPets.TailGene, StringFormat='Хвост: {0}'}"/>
+
+                <Label x:Name="CurrentSelectEarsLabel"
+                       Content="{Binding CurrentPet.ItemPets.EarsGene, StringFormat='Уши: {0}'}"/>
+
+                <Label x:Name="CurrentSelectEyesLabel"
+                       Content="{Binding CurrentPet.ItemPets.EyesGene, StringFormat='Глаза: {0}'}"/>
+
+            </StackPanel>
+        </Grid> 
+        <Grid x:Name="ButtonGrid"
+              Grid.Column="1"
+              Grid.Row="0">
+            <Button x:Name="SelectButton"
+                    Margin="10"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Content="Выбрать питомца"
+                    Click="SelectButton_Click"
+                    />
+            
+        </Grid>
+        <Grid x:Name="ChildrenGrid"
+              Grid.Column="0"
+              Grid.ColumnSpan="4"
+              Grid.Row="2">
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+           
+                <ItemsControl x:Name="ChildrenItemControl"
+                              ItemsSource="{Binding ChildrenPet}">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="core:PetSelectionItem">
+                            <Grid
+                                RowDefinitions="2*,1*">
+                            <Grid Width="150"
+                                  Height="150"
+                                  Margin="5"
+                                  Grid.Row="0">
+
+                                    <Image Source="{Binding ItemAppearancePets.BodyImage}"
+                                           Stretch="Uniform"
+                                            ZIndex="2"/>
+
+                                    <Image Source="{Binding ItemAppearancePets.HeadImage}"
+                                           Stretch="Uniform"
+                                            ZIndex="3"/>
+
+                                    <Image Source="{Binding ItemAppearancePets.TailImage}"
+                                           Stretch="Uniform"
+                                           ZIndex="1"/>
+
+                                    <Image Source="{Binding ItemAppearancePets.EyesImage}"
+                                           Stretch="Uniform"
+                                           ZIndex="5"/>
+
+                                    <Image Source="{Binding ItemAppearancePets.EarsLeftImage}"
+                                           Stretch="Uniform"
+                                           ZIndex="2"/>
+
+                                    <Image Source="{Binding ItemAppearancePets.EarsRightImage}"
+                                           Stretch="Uniform"
+                                           ZIndex="2"/>
+
+                                    <Image Source="{Binding ItemAppearancePets.HornsImage}"
+                                           Stretch="Uniform"
+                                           ZIndex="1"/>
+                                </Grid>
+                                <StackPanel Grid.Row="1" 
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Center">
+                                    <Label Content="{Binding ItemPets.Name}"/>
+                                    <Label Content="{Binding ItemPets.Sex , StringFormat='({0})'}"/>
+                                </StackPanel>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+
+
+
+    </Grid>
+
+
+
+
+</UserControl>

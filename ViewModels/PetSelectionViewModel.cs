@@ -15,8 +15,8 @@ namespace Mendelings.ViewModels
     public partial class PetSelectionViewModel : ViewModelBase
     {
 
-        private readonly PetRepository _petRepository;
-        private readonly AppearancePetService _apearancePetService;
+        private readonly PetRepository? _petRepository;
+        private readonly AppearancePetService? _apearancePetService;
 
         private List<Pet> PetsList;
 
