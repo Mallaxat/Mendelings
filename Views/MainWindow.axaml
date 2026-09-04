@@ -37,6 +37,10 @@
                     Content="К древу"
                     Click="FamilyButton_Click"
                     />
+            <Button x:Name="CollectionButton"
+                    Content="Лаборатория"
+                    Click="CollectionButton_Click"
+                    />
             
         </StackPanel>
 

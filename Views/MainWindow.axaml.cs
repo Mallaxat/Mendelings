@@ -10,6 +10,7 @@ public partial class MainWindow : Window
     PetModelPage _PetModelPage;
     BreedingPage _BreedingPage;
     FamilyTreePage _FamilyTreePage;
+    PetUnlockCollectionPage _PetUnlockCollectionPage;
     public MainWindow()
     {
         InitializeComponent();
@@ -25,10 +26,15 @@ public partial class MainWindow : Window
         {
             DataContext = App.Services.GetRequiredService<FamilyTreeModel>()
         };
+        _PetUnlockCollectionPage = new PetUnlockCollectionPage
+        {
+            DataContext = App.Services.GetRequiredService<PetUnlockCollectionModel>()
+        };
         PageContent.Content = _PetModelPage;
         MainButton.IsEnabled = false;
         FamilyButton.IsEnabled = true;
         BreedingButton.IsEnabled = true;
+        CollectionButton.IsEnabled = true;
     }
 
     private async void BreedingButton_Click(object? sender, RoutedEventArgs e)
@@ -38,6 +44,7 @@ public partial class MainWindow : Window
         MainButton.IsEnabled = true;
         BreedingButton.IsEnabled = false;
         FamilyButton.IsEnabled = true;
+        CollectionButton.IsEnabled = true;
     }
 
     private void MainButton_Click(object? sender, RoutedEventArgs e)
@@ -46,6 +53,7 @@ public partial class MainWindow : Window
         MainButton.IsEnabled = false;
         BreedingButton.IsEnabled = true;
         FamilyButton.IsEnabled = true;
+        CollectionButton.IsEnabled = true;
     }
 
     private void FamilyButton_Click(object? sender, RoutedEventArgs e)
@@ -54,6 +62,24 @@ public partial class MainWindow : Window
         MainButton.IsEnabled = true;
         BreedingButton.IsEnabled = true;
         FamilyButton.IsEnabled = false;
+        CollectionButton.IsEnabled = true;
 
+    }
+
+    private async void CollectionButton_Click(object? sender, RoutedEventArgs e)
+    {
+        if (_PetUnlockCollectionPage.DataContext is PetUnlockCollectionModel viewModel)
+        {
+            viewModel.GetOption();
+            await viewModel.CheckUnlockedAsync();
+        }
+
+
+
+        PageContent.Content = _PetUnlockCollectionPage;
+        CollectionButton.IsEnabled = false;
+        MainButton.IsEnabled = true;
+        BreedingButton.IsEnabled = true;
+        FamilyButton.IsEnabled = true;
     }
 }

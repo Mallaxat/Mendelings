@@ -1,0 +1,133 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:Mendelings.ViewModels"
+             x:Class="Mendelings.Views.PetUnlockCollectionPage"
+             x:DataType="vm:PetUnlockCollectionModel">
+ 
+    <Grid x:Name="MainCollectionGrid"
+          Margin="5">
+        <ScrollViewer HorizontalAlignment="Center"
+            VerticalScrollBarVisibility="Auto">
+
+            <ItemsControl ItemsSource="{Binding PetCollection}">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Width="140"
+                              Height="140"
+                              Margin="5">
+                            <!-- Закрытая карточка -->
+                            <Border Background="Gray"
+                                    CornerRadius="10">
+                                <TextBlock Text="?"
+                                           FontSize="40"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+
+                            <!-- Открытая карточка -->
+                            <Grid IsVisible="{Binding IsUnlocked}"
+                                  Background="White">
+
+                                <ToolTip.Tip>
+                                    <StackPanel Spacing="3">
+
+                                        <TextBlock Text="Генотип"
+                                                   FontWeight="Bold"
+                                                   Margin="0,0,0,5"/>
+
+                                        <TextBlock Text="{Binding BodyGene,
+                                        StringFormat='Тело: {0}'}"/>
+
+                                        <TextBlock Text="{Binding HeadGene,
+                                        StringFormat='Голова: {0}'}"/>
+
+                                        <TextBlock Text="{Binding EarsGene,
+                                        StringFormat='Уши: {0}'}"/>
+
+                                        <TextBlock Text="{Binding EyesGene,
+                                        StringFormat='Глаза: {0}'}"/>
+
+                                        <TextBlock Text="{Binding HornsGene,
+                                        StringFormat='Рога: {0}'}"/>
+
+                                        <TextBlock Text="{Binding TailGene,
+                                        StringFormat='Хвост: {0}'}"/>
+
+                                    </StackPanel>
+                                </ToolTip.Tip>
+
+                                <Image Source="{Binding AppearancePet.BodyImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="2"
+                                       Classes="Breathing"/>
+
+                                <Image Source="{Binding AppearancePet.HeadImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="3"/>
+
+                                <Image Source="{Binding AppearancePet.TailImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="1"
+                                       Classes="TailMove"/>
+
+                                <Image Source="{Binding AppearancePet.EyesImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="5"
+                                       Classes="Blink AutoBlink"/>
+
+                                <Image Source="{Binding AppearancePet.EyesCloseImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="4"/>
+
+                                <Image Source="{Binding AppearancePet.EarsLeftImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="2"
+                                       Classes="EarLeftMove"
+                                       RenderTransformOrigin="38%,22%"/>
+
+                                <Image Source="{Binding AppearancePet.EarsRightImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="2"
+                                       Classes="EarRightMove"
+                                       RenderTransformOrigin="62%,22%"/>
+
+                                <Image Source="{Binding AppearancePet.HornsImage}"
+                                       Stretch="Uniform"
+                                       ZIndex="1"/>
+
+                            </Grid>
+
+
+
+
+                        </Grid>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </ScrollViewer>
+
+
+
+
+
+    </Grid>
+
+
+</UserControl>

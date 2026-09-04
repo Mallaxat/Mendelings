@@ -42,5 +42,5 @@ Mendelings.UI
     +PetsSelectModel — список питомцев и выбор питомца.
     +PetViewModel — экран одного питомца + тамагочи
     +BreedingViewModel — выведение питомца
-    GeneticsViewModel — генетическая лаборатория
-    FamilyTreeViewModel — родословная
+    GeneticsViewModel — варианты внешности
+    +FamilyTreeViewModel — родословная

@@ -53,6 +53,7 @@ public partial class App : Application
         services.AddTransient<PetSelectionViewModel>();
         services.AddTransient<PetSelectionPage>();
         services.AddTransient<FamilyTreeModel>();
+        services.AddTransient<PetUnlockCollectionPage>();
 
         //Классы который будет уметь создавать
         services.AddTransient<PetRepository>();
@@ -63,6 +64,8 @@ public partial class App : Application
         services.AddTransient<AppearancePetService>();
         services.AddTransient<PetSelectionViewModel>();
         services.AddTransient<FamilyTreePage>();
+        services.AddTransient<PetUnlockCollectionModel>();
+        services.AddTransient<PetUnlockCollection>();
 
         // На основе зарегистрированных зависимостей
         // создаём DI-контейнер
