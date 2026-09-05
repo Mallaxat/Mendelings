@@ -3,6 +3,7 @@ using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mendelings.Core;
+using Mendelings.Core.Services;
 using Mendelings.Data;
 using Mendelings.UI;
 using System;
@@ -30,7 +31,7 @@ namespace Mendelings.ViewModels
         private Pet? currentPet;
 
         [ObservableProperty]
-        private int age;
+        private int? age = null;
    
         public PetViewModel(PetRepository petRepository,PetService petService, 
             GeneticsRepository geneticRepository, GeneticsService geneticService, AppearancePetService appearancePetService)

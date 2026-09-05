@@ -121,5 +121,9 @@ namespace Mendelings.Data
         {
             return await _context.Pets.AnyAsync(p => p.Id == id);
         }
+        public async Task<List<Pet>> GetByUserIdAsync(int userId)
+        {
+            return await _context.Pets.Where(x => x.UserId == userId).ToListAsync();
+        }
     }
 }

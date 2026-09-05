@@ -3,6 +3,7 @@ using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mendelings.Core;
+using Mendelings.Core.Services;
 using Mendelings.Data;
 using Mendelings.UI;
 using System;
@@ -32,7 +33,8 @@ namespace Mendelings.ViewModels
         private readonly GeneticsRepository _geneticsRepository;
         private readonly GeneticsService _geneticsService;
         private readonly AppearancePetService _appearancePetService;
-       
+        private readonly CurrentUserService _currentUserService;
+
         [ObservableProperty]
         private AppearancePet? appearanceFemale=new AppearancePet();
         
@@ -43,13 +45,15 @@ namespace Mendelings.ViewModels
         private AppearancePet? appearanceChild = new AppearancePet();
 
         public BreedingViewModel(PetRepository petRepository, PetService petService,
-            GeneticsRepository geneticsRepository, GeneticsService geneticsService, AppearancePetService appearancePetService)
+            GeneticsRepository geneticsRepository, GeneticsService geneticsService, 
+            AppearancePetService appearancePetService, CurrentUserService currentUserService)
         {
             _geneticsRepository = geneticsRepository;
             _geneticsService = geneticsService;
             _petRepository = petRepository;
             _petService = petService;
             _appearancePetService = appearancePetService;
+            _currentUserService= currentUserService;
         }
         //Загрузка пета(ов)
         [RelayCommand]
@@ -72,6 +76,9 @@ namespace Mendelings.ViewModels
             if(CurrentFemalePet == null || CurrentMalePet==null) return;
 
             ChildPet = await _geneticsService.BreedPet(CurrentFemalePet, CurrentMalePet);
+
+            ChildPet.UserId = _currentUserService.UserId.Value;
+
             await _petRepository.AddAsync(ChildPet);
             AppearanceChild = await _appearancePetService.LoadAppearancePet(ChildPet);
 

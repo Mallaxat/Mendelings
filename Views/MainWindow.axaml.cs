@@ -39,6 +39,10 @@ public partial class MainWindow : Window
 
     private async void BreedingButton_Click(object? sender, RoutedEventArgs e)
     {
+        if (_PetUnlockCollectionPage.DataContext is PetUnlockCollectionModel viewModel)
+        {
+            await viewModel.LoadCollectionAsync();
+        }
         PageContent.Content = _BreedingPage;
 
         MainButton.IsEnabled = true;
@@ -70,11 +74,8 @@ public partial class MainWindow : Window
     {
         if (_PetUnlockCollectionPage.DataContext is PetUnlockCollectionModel viewModel)
         {
-            viewModel.GetOption();
-            await viewModel.CheckUnlockedAsync();
+            await viewModel.LoadCollectionAsync();
         }
-
-
 
         PageContent.Content = _PetUnlockCollectionPage;
         CollectionButton.IsEnabled = false;

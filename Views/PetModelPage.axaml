@@ -18,7 +18,7 @@
               ShowGridLines="False"
               Grid.Column="0"
               Grid.Row="0"
-              RowDefinitions="1*,1*,1*,1*,1*,1*,1*,1*"
+              RowDefinitions="1*,1*,1*,1*,1*,1*,1*"
               ColumnDefinitions="1*,1*"
               RowSpacing="2"
               ColumnSpacing="3">
@@ -43,38 +43,31 @@
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
-            <Label x:Name="HealthLabel"
-                   Content="Здоровье:"
-                   Grid.Column="0"
-                   Grid.Row="3"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
             <Label x:Name="HungerLabel"
                    Content="Голод:"
                    Grid.Column="0"
-                   Grid.Row="4"
+                   Grid.Row="3"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
             <Label x:Name="MoodLabel"
                    Content="Настроение:"
                    Grid.Column="0"
-                   Grid.Row="5"
+                   Grid.Row="4"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
             <Label x:Name="EnergyLabel"
                    Content="Энергия:"
                    Grid.Column="0"
-                   Grid.Row="6"
+                   Grid.Row="5"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
             <Label x:Name="SleepingLabel"
                    Content="Спит:"
                    Grid.Column="0"
-                   Grid.Row="7"
+                   Grid.Row="6"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
@@ -103,18 +96,10 @@
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
 
-            <Label x:Name="HealthLabelValue"
-                   Content="{Binding CurrentPet.Health}"
-                   Grid.Column="1"
-                   Grid.Row="3"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-
             <Label x:Name="HungerLabelValue"
                    Content="{Binding CurrentPet.Hunger}"
                    Grid.Column="1"
-                   Grid.Row="4"
+                   Grid.Row="3"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
@@ -122,7 +107,7 @@
             <Label x:Name="MoodLabelValue"
                    Content="{Binding CurrentPet.Mood}"
                    Grid.Column="1"
-                   Grid.Row="5"
+                   Grid.Row="4"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
@@ -130,14 +115,14 @@
             <Label x:Name="EnergyLabelValue"
                    Content="{Binding CurrentPet.Energy}"
                    Grid.Column="1"
-                   Grid.Row="6"
+                   Grid.Row="5"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
             <Label x:Name="SleepingLabelValue"
                    Content="{Binding CurrentPet.IsSleeping}"
                    Grid.Column="1"
-                   Grid.Row="7"
+                   Grid.Row="6"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
                    Padding="1"/>
@@ -232,13 +217,11 @@
 
 
         <Button Grid.Column="2"
+                Grid.Row="0"
+                VerticalAlignment="Bottom"
                 Content="Выбрать любимца"
                 Click="Button_Click"/>
 
-        <Button Grid.Column="1"
-                Content="Refresh"
-                Command="{Binding RefreshStateCommand}"
-                Margin="0,70,0,0"/>
 
     
         

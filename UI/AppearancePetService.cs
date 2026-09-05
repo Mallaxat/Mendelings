@@ -2,6 +2,7 @@
 using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Mendelings.Core;
+using Mendelings.Core.Services;
 using Mendelings.Data;
 using System;
 using System.Collections.Generic;

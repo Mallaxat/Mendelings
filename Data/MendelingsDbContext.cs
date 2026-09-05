@@ -9,7 +9,8 @@ namespace Mendelings.Data
 {
     public class MendelingsDbContext :DbContext
     {
-        public DbSet<Pet> Pets { get; set; }
+        public DbSet<User> Users {get; set;}
+        public DbSet<Pet> Pets {get; set;}
         public DbSet<GeneticTrait> GeneticTraits { get; set; }
 
         public MendelingsDbContext(DbContextOptions<MendelingsDbContext> options)
@@ -21,6 +22,7 @@ namespace Mendelings.Data
         {
             modelBuilder.ApplyConfiguration(new PetConfiguration());
             modelBuilder.ApplyConfiguration(new GeneticTraitConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

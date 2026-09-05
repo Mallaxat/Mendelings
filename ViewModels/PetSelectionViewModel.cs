@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mendelings.Core;
+using Mendelings.Core.Services;
 using Mendelings.Data;
 using Mendelings.UI;
 using System;
@@ -17,6 +18,7 @@ namespace Mendelings.ViewModels
 
         private readonly PetRepository? _petRepository;
         private readonly AppearancePetService? _apearancePetService;
+
 
         private List<Pet> PetsList;
 

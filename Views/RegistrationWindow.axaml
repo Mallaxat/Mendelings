@@ -1,0 +1,146 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Mendelings.ViewModels"
+        mc:Ignorable="d"
+        x:Class="Mendelings.Views.RegistrationWindow"
+        x:DataType="vm:RegistrationViewModel">
+
+
+
+
+    <Grid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <StackPanel Width="350"
+                        Margin="20"
+                        Spacing="15"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <TextBlock Text="Mendelings"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Вход"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+
+
+                <!-- Email -->
+
+                <TextBlock Text="Электронная почта"/>
+
+                <TextBox Text="{Binding Email}"
+                         Watermark="example@mail.ru"/>
+
+
+                <!-- Пароль -->
+
+                <TextBlock Text="Пароль"/>
+
+                <TextBox Text="{Binding Password}"
+                         PasswordChar="●"
+                         Watermark="Введите пароль"/>
+
+
+                <!-- Кнопка входа -->
+
+                <Button Content="Войти"
+                        Command="{Binding LoginCommand}"
+                        HorizontalAlignment="Stretch"/>
+
+
+                <!-- Открыть регистрацию -->
+
+                <Button Content="Регистрация"
+                        Command="{Binding ShowRegistrationCommand}"
+                        IsVisible="{Binding !IsRegistrationMode}"
+                        HorizontalAlignment="Stretch"/>
+
+
+                <!-- Блок регистрации -->
+
+                <StackPanel IsVisible="{Binding IsRegistrationMode}"
+                            Spacing="12">
+
+                    <TextBlock Text="Регистрация"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+
+
+                    <!-- Логин -->
+
+                    <TextBlock Text="Логин"/>
+
+                    <TextBox Text="{Binding Username}"
+                             Watermark="Придумайте логин"/>
+
+
+                    <!-- Отправить код -->
+
+                    <Button Content="Получить код подтверждения"
+                            Command="{Binding SendCodeCommand}"
+                            HorizontalAlignment="Stretch"/>
+
+
+                    <!-- Ввод кода -->
+
+                    <StackPanel IsVisible="{Binding CodeSent}"
+                                Spacing="10">
+
+                        <TextBlock Text="Введите код из письма"/>
+
+                        <TextBox Text="{Binding Code}"
+                                 Watermark="123456"/>
+
+                        <Button Content="Подтвердить код"
+                                Command="{Binding VerifyCodeCommand}"
+                                HorizontalAlignment="Stretch"/>
+
+                    </StackPanel>
+
+
+                    <!-- Почта подтверждена -->
+
+                    <TextBlock Text="Почта подтверждена"
+                               IsVisible="{Binding EmailVerified}"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"/>
+
+
+                    <!-- Завершить регистрацию -->
+
+                    <Button Content="Зарегистрироваться"
+                            Command="{Binding RegisterCommand}"
+                            IsVisible="{Binding EmailVerified}"
+                            HorizontalAlignment="Stretch"/>
+
+
+                    <!-- Отмена регистрации -->
+
+                    <Button Content="Отмена"
+                            Command="{Binding CancelRegistrationCommand}"
+                            HorizontalAlignment="Stretch"/>
+
+                </StackPanel>
+
+
+                <!-- Сообщения -->
+
+                <TextBlock Text="{Binding Message}"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Center"/>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+    </Grid>
+
+</Window>

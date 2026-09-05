@@ -14,6 +14,7 @@ namespace Mendelings.Data.Models
        //Тут мы по сути настраиваем свойства наших объектов
         public void Configure(EntityTypeBuilder<Pet> builder)
         {
+
             builder.HasKey(p => p.Id); //ID первичный ключ
 
             builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
@@ -42,6 +43,12 @@ namespace Mendelings.Data.Models
                 .WithMany()
                 .HasForeignKey(p => p.FatherId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+           //связь с пользователем
+            builder.HasOne(p => p.User)
+                .WithMany(u => u.Pets)
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

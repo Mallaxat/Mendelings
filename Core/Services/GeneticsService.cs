@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mendelings.Core
+namespace Mendelings.Core.Services
 {
     public class GeneticsService
     {

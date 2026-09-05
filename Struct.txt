@@ -26,6 +26,7 @@ Mendelings.Core
     +GeneticTrait — описание одного генетического признака.
     +GeneticsService — генетическая логика
     +PetService — игрова логика(сон, еда и тд)
+    User - хранит информацию о пользователе
   
 Mendelings.Data
 

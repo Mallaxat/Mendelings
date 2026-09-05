@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Mendelings.Core
+namespace Mendelings.Core.Services
 {
     public static class FileService
     {

@@ -84,12 +84,17 @@ namespace Mendelings.Core
             readyPet.HornsGene = gene;
             return this;
         }
-
+        public PetBuilder SetUser(int userId)
+        {
+            readyPet.UserId = userId;
+            return this;
+        }
         public Pet Build()
         {
             Pet result = readyPet;
             readyPet = new Pet();
             return result;
         }
+
     }
 }

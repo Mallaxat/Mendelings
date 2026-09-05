@@ -13,6 +13,10 @@ namespace Mendelings.Core
     //Класс хранит данные о питомце
     public partial class Pet : ObservableObject
     {
+        //Связь пользователем
+        public int UserId { get; set; }
+        public User User { get; set; } = null!;
+
         public bool IsDead { get; set; }
 
         //Связи для бд

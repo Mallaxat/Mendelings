@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mendelings.Core
+namespace Mendelings.Core.Services
 {
     public class PetService
     {
