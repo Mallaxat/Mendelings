@@ -72,8 +72,7 @@
 
                                 <Image Source="{Binding AppearancePet.BodyImage}"
                                        Stretch="Uniform"
-                                       ZIndex="2"
-                                       Classes="Breathing"/>
+                                       ZIndex="2"/>
 
                                 <Image Source="{Binding AppearancePet.HeadImage}"
                                        Stretch="Uniform"
@@ -81,13 +80,11 @@
 
                                 <Image Source="{Binding AppearancePet.TailImage}"
                                        Stretch="Uniform"
-                                       ZIndex="1"
-                                       Classes="TailMove"/>
+                                       ZIndex="1" />
 
                                 <Image Source="{Binding AppearancePet.EyesImage}"
                                        Stretch="Uniform"
-                                       ZIndex="5"
-                                       Classes="Blink AutoBlink"/>
+                                       ZIndex="5"/>
 
                                 <Image Source="{Binding AppearancePet.EyesCloseImage}"
                                        Stretch="Uniform"
@@ -96,13 +93,11 @@
                                 <Image Source="{Binding AppearancePet.EarsLeftImage}"
                                        Stretch="Uniform"
                                        ZIndex="2"
-                                       Classes="EarLeftMove"
                                        RenderTransformOrigin="38%,22%"/>
 
                                 <Image Source="{Binding AppearancePet.EarsRightImage}"
                                        Stretch="Uniform"
                                        ZIndex="2"
-                                       Classes="EarRightMove"
                                        RenderTransformOrigin="62%,22%"/>
 
                                 <Image Source="{Binding AppearancePet.HornsImage}"

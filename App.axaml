@@ -15,6 +15,10 @@
         <StyleInclude Source="/Styles/Animations/Breathing.axaml" />
         <StyleInclude Source="/Styles/Animations/EarsMoveLeft.axaml" />
         <StyleInclude Source="/Styles/Animations/EarsMoveRight.axaml" />
-         <StyleInclude Source="/Styles/Animations/TailMove.axaml" />
+        <StyleInclude Source="/Styles/Animations/TailMove.axaml" />
+        <StyleInclude Source="/Styles/Text/TextStyle.axaml" />
+        <StyleInclude Source="/Styles/Buttons/ButtonMain.axaml" />
+         <StyleInclude Source="/Styles/Buttons/ButtonStyle.axaml" />
+        
     </Application.Styles>
 </Application>

@@ -9,16 +9,17 @@ namespace Mendelings.Core.Services
     
         const int TIME_STATE_HUNGER= 10;
         const int TIME_STATE_MOOD = 15;
-        const int TIME_STATE_ENERGY = 15;
-        const int TIME_STATE_SLEEP = 5;
+        const int TIME_STATE_ENERGY = 5;
+        const int TIME_STATE_SLEEP = 1;
         const int TIME_STATE_HEALTH = 5;
 
+        const int STATE_APPEND_ENERGY = 5;
         const int STATE_APPEND = 25;
         const int FOOD_HEALTH = 5;
 
         public void UpdateState(Pet pet)
         {
-            if (pet.IsDead) return;
+            //if (pet.IsDead) return;
 
             DateTime now = DateTime.Now;
 
@@ -26,14 +27,13 @@ namespace Mendelings.Core.Services
             pet.HungerMinutes += minutesPassed;
 
             // Логика, что сытость уменьшается
-            int hungerLoss = pet.HungerMinutes / TIME_STATE_HUNGER;
+            int hungerLoss = (pet.HungerMinutes / TIME_STATE_HUNGER)*10;
             pet.Hunger = Math.Max(0, pet.Hunger - hungerLoss);
             pet.HungerMinutes %= TIME_STATE_HUNGER;
 
             //если не спит
             if (!pet.IsSleeping)
             {
-
                 pet.MoodMinutes+= minutesPassed;
                 pet.EnergyMinutes+= minutesPassed;
 
@@ -70,9 +70,9 @@ namespace Mendelings.Core.Services
         }
         public void Play(Pet pet)
         {
-            if(pet.Energy>= STATE_APPEND)
+            if(pet.Energy>= STATE_APPEND_ENERGY && pet.Mood<100)
             {
-                pet.Energy = Math.Max(0, pet.Energy - STATE_APPEND);
+                pet.Energy = Math.Max(0, pet.Energy - STATE_APPEND_ENERGY);
                 pet.Mood = Math.Min(pet.Mood + STATE_APPEND, 100);
             }
 

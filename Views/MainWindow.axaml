@@ -13,40 +13,61 @@
         <vm:MainViewModel />
     </Design.DataContext>
 
-    <Grid 
+    <Grid
         ShowGridLines="True"
-        RowDefinitions="0.5*,1*,10*,0.5*"
-        ColumnDefinitions="0.5*,10*,0.5*">
+        RowDefinitions="1*,10*" >
+
+        <Image x:Name="FoneImage"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Grid.RowSpan="2"
+                   Source="/Assets/Level1/Main_Fone.png"
+                   Stretch="UniformToFill"
+                   IsHitTestVisible="False"/>
+
         <ContentControl x:Name="PageContent"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Grid.Row="1"/>
+        <Border Grid.Row="0"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                Background="#f4f9fd"
+                CornerRadius="5">
+
+
+            <StackPanel x:Name="ButtonsStackPanel"
                         Grid.Column="1"
-                        Grid.Row="2"/>
-        <StackPanel x:Name="ButtonsStackPanel"
-                    Grid.Column="1"
-                    Grid.Row="1"
-                    Orientation="Horizontal"
-                    Spacing="5">
-            <Button x:Name="MainButton"
-                    Content="Уход за питомцем"
-                    Click="MainButton_Click"
-                    />
-            <Button x:Name="BreedingButton"
-                    Content="К разведению"
-                    Click="BreedingButton_Click"
-                    />
-            <Button x:Name="FamilyButton"
-                    Content="К древу"
-                    Click="FamilyButton_Click"
-                    />
-            <Button x:Name="CollectionButton"
-                    Content="Лаборатория"
-                    Click="CollectionButton_Click"
-                    />
-            
-        </StackPanel>
+                        Grid.Row="0"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal"
+                        Spacing="25"
+                        Classes="ButtonMainMenu">
+                <Button x:Name="MainButton"
+                        Content="Уход за питомцем"
+                        Click="MainButton_Click"
+                        Classes="ButtonMainMenu"
+                        />
+                <Button x:Name="BreedingButton"
+                        Content="К разведению"
+                        Click="BreedingButton_Click"
+                        Classes="ButtonMainMenu"
+                        />
+                <Button x:Name="FamilyButton"
+                        Content="К древу"
+                        Click="FamilyButton_Click"
+                        Classes="ButtonMainMenu"
+                        />
+                <Button x:Name="CollectionButton"
+                        Content="Лаборатория"
+                        Click="CollectionButton_Click"
+                        Classes="ButtonMainMenu"
+                        />
 
-
-  
-
+            </StackPanel>
+                </Border>
     </Grid>
 
 

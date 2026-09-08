@@ -8,222 +8,371 @@
              d:DesignHeight="450"
              x:Class="Mendelings.Views.PetModelPage"
              x:DataType="vm:PetViewModel">
-  
-    <Grid x:Name="MainGrid"
-          ShowGridLines="True"
-          RowDefinitions="1*,1*,1*"
-          ColumnDefinitions="1*,1*,1*"
-          >
-        <Grid x:Name="BlockPetInfoGrid"
+
+    <Viewbox Stretch="Uniform">
+        <Grid x:Name="MainGrid"
               ShowGridLines="False"
-              Grid.Column="0"
-              Grid.Row="0"
-              RowDefinitions="1*,1*,1*,1*,1*,1*,1*"
-              ColumnDefinitions="1*,1*"
-              RowSpacing="2"
-              ColumnSpacing="3">
-            <Label x:Name="NameLabel"
-                   Content="Имя:"
-                   Grid.Column="0"
-                   Grid.Row="0"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-            <Label x:Name="SexLabel"
-                   Content="Пол:"
-                   Grid.Column="0"
-                   Grid.Row="1"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-            <Label x:Name="AgeLabel"
-                   Content="Возраст:"
-                   Grid.Column="0"
-                   Grid.Row="2"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-            <Label x:Name="HungerLabel"
-                   Content="Голод:"
-                   Grid.Column="0"
-                   Grid.Row="3"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-            <Label x:Name="MoodLabel"
-                   Content="Настроение:"
-                   Grid.Column="0"
-                   Grid.Row="4"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-            <Label x:Name="EnergyLabel"
-                   Content="Энергия:"
-                   Grid.Column="0"
-                   Grid.Row="5"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-            <Label x:Name="SleepingLabel"
-                   Content="Спит:"
-                   Grid.Column="0"
-                   Grid.Row="6"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
+              Height="450"
+              Width="900"
+              RowDefinitions="1*,3*"
+              ColumnDefinitions="2*,3*,1*"
+              Margin="5"
+              >
 
-            <Label x:Name="NameLabelValue"
-                   Content="{Binding CurrentPet.Name}"
-                   Grid.Column="1"
-                   Grid.Row="0"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
+            <!-- Левая панель -->
+            <Border Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Grid.Row="0" Grid.RowSpan="2"
+                    Margin="0,0,0,70"
+                    Background="#f4f9fd"
+                    CornerRadius="10">
+                <!-- информация -->
+                <StackPanel Spacing="10" VerticalAlignment="Center">
+                    <Border Margin="5,5,5,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="15">
+                        <Grid ColumnDefinitions="auto,3*"
+                              ColumnSpacing="5">
+                            <Image Grid.Column="0"
+                                   Width="20"
+                                   Height="20"
+                                   Source="/Assets/Level1/Info/Icons/icon_paw.png"
+                                   Stretch="Uniform" 
+                                   />
+                            <Label Content="Информация о питомце"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Margin="10,0,0,0"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="15,0,15,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="5">
+                        <Grid ColumnDefinitions="auto,3*,3*"
+                              ColumnSpacing="5">
+                            <Image Grid.Column="0"
+                                   Width="15"
+                                   Height="15"
+                                   Source="/Assets/Level1/Info/Icons/icon_name.png"
+                                   Stretch="Uniform"
+                                   Margin="5,0,0,0"/>
+                            <Label Content="Имя:"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding CurrentPet.Name}"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="15,0,15,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="5">
+                        <Grid ColumnDefinitions="auto,3*,3*"
+                              ColumnSpacing="5">
+                            <Image Grid.Column="0"
+                                   Width="15"
+                                   Height="15"
+                                   Source="/Assets/Level1/Info/Icons/icon_sex.png"
+                                   Stretch="Uniform"
+                                   Margin="5,0,0,0"/>
+                            <Label Content="Пол:"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding CurrentPet.Sex}"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="15,0,15,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="5">
+                        <Grid ColumnDefinitions="auto,3*,3*"
+                              ColumnSpacing="5">
+                            <Image Grid.Column="0"
+                                   Width="15"
+                                   Height="15"
+                                   Source="/Assets/Level1/Info/Icons/icon_age.png"
+                                   Stretch="Uniform"
+                                   Margin="5,0,0,0"/>
+                            <Label Content="Возраст:"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding Age}"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="15,0,15,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="5">
+                        <Grid ColumnDefinitions="auto,3*,3*"
+                              ColumnSpacing="5">
+                            <Image Grid.Column="0"
+                                   Width="15"
+                                   Height="15"
+                                   Source="/Assets/Level1/Info/Icons/icon_mood.png"
+                                   Stretch="Uniform"
+                                   Margin="5,0,0,0"/>
+                            <Label Content="Настроение:"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding CurrentPet.Mood}"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="15,0,15,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="5">
+                        <Grid ColumnDefinitions="auto,3*,3*"
+                              ColumnSpacing="5">
+                            <Image Grid.Column="0"
+                                   Width="15"
+                                   Height="15"
+                                   Source="/Assets/Level1/Info/Icons/icon_food.png"
+                                   Stretch="Uniform"
+                                   Margin="5,0,0,0"/>
+                            <Label Content="Голод:"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding CurrentPet.Hunger}"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="15,0,15,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="5">
+                        <Grid ColumnDefinitions="auto,3*,3*"
+                              ColumnSpacing="5">
+                            <Image Grid.Column="0"
+                                   Width="15"
+                                   Height="15"
+                                   Source="/Assets/Level1/Info/Icons/icon_energy.png"
+                                   Stretch="Uniform"
+                                   Margin="5,0,0,0"/>
+                            <Label Content="Энергия:"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding CurrentPet.Energy}"
+                                   Grid.Column="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="17"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
 
-            <Label x:Name="SexLabelValue"
-                   Content="{Binding CurrentPet.Sex}"
-                   Grid.Column="1"
-                   Grid.Row="1"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
 
-            <Label x:Name="AgeLabelValue"
-                   Content="{Binding Age}"
-                   Grid.Column="1"
-                   Grid.Row="2"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
+                </StackPanel>
+            </Border>
 
-            <Label x:Name="HungerLabelValue"
-                   Content="{Binding CurrentPet.Hunger}"
-                   Grid.Column="1"
-                   Grid.Row="3"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
+            <!-- Центральная часть -->
 
-            <Label x:Name="MoodLabelValue"
-                   Content="{Binding CurrentPet.Mood}"
-                   Grid.Column="1"
-                   Grid.Row="4"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
+            <!-- Действия -->
+            <Border Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    Background="#d8ecfc"
+                    CornerRadius="10"
+                    Padding="15"
+                    Margin="10,15,10,15">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="10">
+                    <Button x:Name="FeedButton"
+                            Command="{Binding FeedCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            CornerRadius="10"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle">
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_feed.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="UniformToFill"
+                                   />
+                            <TextBlock Text="Кормить"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="PlayButton"
+                            Command="{Binding PlayCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            CornerRadius="10"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle">
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_game.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="UniformToFill"
+                                   />
+                            <TextBlock Text="Играть"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SleepButton"
+                            Command="{Binding StartSleepCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            CornerRadius="10"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle"
+                            Click="SleepButton_Click">
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_sleep.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="Uniform"
+                                   />
+                            <TextBlock Text="Спать"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="WakeUpButton"
+                            Command="{Binding WakeUpCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            CornerRadius="10"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle"
+                            Click="WakeUpButton_Click"
+                            >
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_awake.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="Uniform"
+                                   />
+                            <TextBlock Text="Подъем"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
 
-            <Label x:Name="EnergyLabelValue"
-                   Content="{Binding CurrentPet.Energy}"
-                   Grid.Column="1"
-                   Grid.Row="5"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
-            <Label x:Name="SleepingLabelValue"
-                   Content="{Binding CurrentPet.IsSleeping}"
-                   Grid.Column="1"
-                   Grid.Row="6"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Padding="1"/>
+                </StackPanel>
+            </Border>
 
-        </Grid>
-
-        <Grid x:Name="BlockButtonGrid"
-              ShowGridLines="True"
-              Grid.Column="1" 
-              Grid.Row="0"
-              RowDefinitions="1*,5*,5*"
-              RowSpacing="4"
-              Margin="5">
-            <StackPanel x:Name="RowButtonStackPanel"
-                        Grid.Row="1"
-                        Orientation="Horizontal"
-                        Spacing="10"
-                        VerticalAlignment="Top">
-                <Button x:Name="FeedButton"
-                        Content="Кормить"
-                        Command="{Binding FeedCommand}"/>
-                <Button x:Name="PlayButton"
-                        Content="Играть"
-                        Command="{Binding PlayCommand}"/>
-                <Button x:Name="SleepButton"
-                        Content="Спать"
-                        Command="{Binding StartSleepCommand}"
-                        Click="SleepButton_Click"/>
-                <Button x:Name="WakeUpButton"
-                        Content="Разбудить"
-                        Command="{Binding WakeUpCommand}"
-                        Click="WakeUpButton_Click"/>
-                <Button x:Name="HealButton"
-                        Content="Подлечить"
-                        Command="{Binding HealCommand}"/>
-
-            </StackPanel>
-      
-        </Grid>
-
-        <Grid x:Name="PetGrid"
-              Grid.Row="1"
-              Grid.RowSpan="2"
-              Grid.Column="1">
-
-            <Image x:Name="BodyImage"
-                   Source="{Binding AppearanceCurrent.BodyImage}"
-                   ZIndex="2"
-                   Classes="Breathing">
-            </Image>
-            <Image x:Name="HeadImage"
-                   Source="{Binding AppearanceCurrent.HeadImage}"
-                   ZIndex="3">
-            </Image>
-
-            <Image x:Name="TailImage"
-                   Source="{Binding AppearanceCurrent.TailImage}"
-                   ZIndex="1"
-                   Classes="TailMove">
-            </Image>
-
-            <Image x:Name="EyesImage"
-                   Source="{Binding AppearanceCurrent.EyesImage}"
-                   ZIndex="5"
-                   Classes="Blink AutoBlink">
-            </Image>
-            <Image x:Name="EyesCloseImage"
+            <!-- Питомец -->
+            <Grid Grid.Row="1"
+                  Grid.Column="1">
+                
+                <Image x:Name="BodyImage"
+                       Source="{Binding AppearanceCurrent.BodyImage}"
+                       ZIndex="2"
+                       Classes="Breathing"/>     
+                <Image x:Name="HeadImage"
+                       Source="{Binding AppearanceCurrent.HeadImage}"
+                       ZIndex="3"/>
+                <Image x:Name="TailImage"
+                       Source="{Binding AppearanceCurrent.TailImage}"
+                       ZIndex="1"
+                       Classes="TailMove"/>
+                <Image x:Name="EyesImage"
+                       Source="{Binding AppearanceCurrent.EyesImage}"
+                       ZIndex="5"
+                       Classes="Blink AutoBlink"/>
+                <Image x:Name="EyesCloseImage"
                    Source="{Binding AppearanceCurrent.EyesCloseImage}"
-                   ZIndex="4">
-            </Image>
+                   ZIndex="4"/>
+                <Image x:Name="EarsImageLeft"
+                       Source="{Binding AppearanceCurrent.EarsLeftImage}"
+                       ZIndex="2"
+                       Classes="EarLeftMove"
+                       RenderTransformOrigin="38%,22%"/>
+                <Image x:Name="EarsImageRight"
+                       Source="{Binding AppearanceCurrent.EarsRightImage}"
+                       ZIndex="2"
+                       Classes="EarRightMove"
+                       RenderTransformOrigin="62%,22%"/>
+                <Image x:Name="HornsImage"
+                       Source="{Binding AppearanceCurrent.HornsImage}"
+                       ZIndex="1"/>
+            </Grid>
 
-            <Image x:Name="EarsImageLeft"
-                   Source="{Binding AppearanceCurrent.EarsLeftImage}"
-                   ZIndex="2"
-                   Classes="EarLeftMove"
-                   RenderTransformOrigin="38%,22%"
-                   >
-            </Image>
-            <Image x:Name="EarsImageRight"
-                   Source="{Binding AppearanceCurrent.EarsRightImage}"
-                   ZIndex="2"
-                   Classes="EarRightMove"
-                   RenderTransformOrigin="62%,22%" 
-                   >
-            </Image>
+            <!-- Правая часть -->
+            <Border Grid.Column="2"
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,15,0">
+                <!-- декор / выбор любимца -->
+                <Button Grid.Column="2"
+                        Grid.Row="0"
+                        VerticalAlignment="Bottom"
+                        FontSize="14"
+                        Content="Выбрать&#10;Любимца"
+                        Click="Button_Click"
+                        Classes="ButtonMain"/>
+            </Border>
 
-            <Image x:Name="HornsImage"
-                   Source="{Binding AppearanceCurrent.HornsImage}"
-                   ZIndex="1">
-            </Image>
         </Grid>
+        </Viewbox>
 
-
-        <Button Grid.Column="2"
-                Grid.Row="0"
-                VerticalAlignment="Bottom"
-                Content="Выбрать любимца"
-                Click="Button_Click"/>
-
-
-    
-        
-    </Grid>
 </UserControl>

@@ -1,0 +1,55 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="Button.ButtonMain">
+
+        <Setter Property="Background" Value="#3790fd"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="14,8"/>
+
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        <!-- Текст -->
+        <Style Selector="^ Label.TextStyle">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#17396D"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="1"/>
+        </Style>
+
+        <!-- Наведение -->
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#17396D"/>
+        </Style>
+
+        <!-- Белый текст при нажатии -->
+        <Style Selector="^:pointerover Label.TextStyle">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+        </Style>
+
+        <!-- Выключенное состояние -->
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#17396D"/>
+        </Style>
+
+        <!-- Белый текст в выключенном состоянии -->
+        <Style Selector="^:disabled Label.TextStyle">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+        </Style>
+
+    </Style>
+
+</Styles>
+

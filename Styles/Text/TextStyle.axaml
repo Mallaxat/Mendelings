@@ -1,0 +1,17 @@
+
+    <Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="Label.TextStyle">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+
+        <Setter Property="Foreground" Value="#17396D"/>
+
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="1"/>
+    </Style>
+
+</Styles>
+ 
+

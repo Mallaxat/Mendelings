@@ -20,25 +20,50 @@ namespace Mendelings.Views
         {
             _petViewModel = petViewModel;
             DataContext = petViewModel;
+
         }
 
         private async void SleepButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             await Sleep();
+            SleepButton.IsEnabled = false;
+            WakeUpButton.IsEnabled = true;
         }
         private async void WakeUpButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             await WakeUp();
+            SleepButton.IsEnabled = true;
+            WakeUpButton.IsEnabled = false;
         }
 
         private async void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+
             await LoadDate();
             await SleepState();
+            if ( DataContext is PetViewModel MyViewModel)
+            {
+                if (MyViewModel.CurrentPet == null)
+                {
+                    FeedButton.IsEnabled = false;
+                    PlayButton.IsEnabled = false;
+                    SleepButton.IsEnabled = false;
+                    WakeUpButton.IsEnabled = false;
+                }
+                else
+                {
+                    FeedButton.IsEnabled = true;
+                    PlayButton.IsEnabled = true;
+                    SleepButton.IsEnabled = true;
+                    WakeUpButton.IsEnabled = true;
+                }
+
+            }
 
         }
         private async Task LoadDate()
         {
+
             Window? mainWindow = TopLevel.GetTopLevel(this) as Window;
             PetSelectionPage page = App.Services.GetRequiredService<PetSelectionPage>();
             if (page.DataContext is PetSelectionViewModel viewModel)
@@ -55,6 +80,8 @@ namespace Mendelings.Views
                 MyViewModel.CurrentPet = resultSelect;
                 await MyViewModel.LoadPetAsync(MyViewModel.CurrentPet);
             }
+
+
         }
         private async Task SleepState()
         {
@@ -70,7 +97,6 @@ namespace Mendelings.Views
         }
         private async Task WakeUp()
         {
-            HealButton.IsEnabled = true;
             FeedButton.IsEnabled = true;
             PlayButton.IsEnabled = true;
 
@@ -92,7 +118,6 @@ namespace Mendelings.Views
         }
         private async Task Sleep()
         {
-            HealButton.IsEnabled = false;
             FeedButton.IsEnabled = false;
             PlayButton.IsEnabled = false;
 
