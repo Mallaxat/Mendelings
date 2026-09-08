@@ -19,6 +19,7 @@
         <StyleInclude Source="/Styles/Text/TextStyle.axaml" />
         <StyleInclude Source="/Styles/Buttons/ButtonMain.axaml" />
          <StyleInclude Source="/Styles/Buttons/ButtonStyle.axaml" />
-        
+         <StyleInclude Source="/Styles/Buttons/ButtonStyle2.axaml" />
+
     </Application.Styles>
 </Application>

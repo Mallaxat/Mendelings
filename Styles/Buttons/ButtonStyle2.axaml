@@ -1,0 +1,22 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ОБЫЧНОЕ СОСТОЯНИЕ -->
+    <Style Selector="Button.ButtonStyle /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#318df7"/>
+        <Setter Property="Foreground" Value="#f4f9fd"/>
+    </Style>
+
+    <!-- НАВЕДЕНИЕ -->
+    <Style Selector="Button.ButtonStyle:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#f4f9fd"/>
+        <Setter Property="Foreground" Value="#17396D"/>
+    </Style>
+
+    <!-- ОТКЛЮЧЕННАЯ КНОПКА -->
+    <Style Selector="Button.ButtonStyle:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="#f4f9fd"/>
+        <Setter Property="Foreground" Value="#17396D"/>
+    </Style>
+
+</Styles>

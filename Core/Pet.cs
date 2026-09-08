@@ -29,7 +29,10 @@ namespace Mendelings.Core
         [ObservableProperty]
         private string name = string.Empty;
         public PetSex Sex { get; set; }
-        
+     
+    
+
+
         //поколение
         public int Generation { get; set; }
 

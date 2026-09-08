@@ -49,14 +49,29 @@ namespace Mendelings.Views
                     PlayButton.IsEnabled = false;
                     SleepButton.IsEnabled = false;
                     WakeUpButton.IsEnabled = false;
+
                 }
                 else
                 {
-                    FeedButton.IsEnabled = true;
-                    PlayButton.IsEnabled = true;
-                    SleepButton.IsEnabled = true;
-                    WakeUpButton.IsEnabled = true;
+
+                    if (MyViewModel.CurrentPet.IsSleeping == true)
+                    {
+                        FeedButton.IsEnabled = false;
+                        PlayButton.IsEnabled = false;
+                        SleepButton.IsEnabled = false;
+                        WakeUpButton.IsEnabled = true;
+                    }
+                    else
+                    {
+                        FeedButton.IsEnabled = true;
+                        PlayButton.IsEnabled = true;
+                        SleepButton.IsEnabled = true;
+                        WakeUpButton.IsEnabled = true;
+                    }
+
                 }
+
+
 
             }
 

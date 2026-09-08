@@ -34,8 +34,9 @@
         <Border Grid.Row="0"
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
-                Background="#f4f9fd"
-                CornerRadius="5">
+                Background="#B3f4f9fd"
+                CornerRadius="5"
+                >
 
 
             <StackPanel x:Name="ButtonsStackPanel"
@@ -43,28 +44,23 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal"
-                        Spacing="25"
-                        Classes="ButtonMainMenu">
+                        Spacing="25">
                 <Button x:Name="MainButton"
                         Content="Уход за питомцем"
                         Click="MainButton_Click"
-                        Classes="ButtonMainMenu"
-                        />
+                        Classes="ButtonStyle2"/>
                 <Button x:Name="BreedingButton"
                         Content="К разведению"
                         Click="BreedingButton_Click"
-                        Classes="ButtonMainMenu"
-                        />
+                        Classes="ButtonStyle2"/>
                 <Button x:Name="FamilyButton"
                         Content="К древу"
                         Click="FamilyButton_Click"
-                        Classes="ButtonMainMenu"
-                        />
+                        Classes="ButtonStyle2"/>
                 <Button x:Name="CollectionButton"
                         Content="Лаборатория"
                         Click="CollectionButton_Click"
-                        Classes="ButtonMainMenu"
-                        />
+                        Classes="ButtonStyle2"/>
 
             </StackPanel>
                 </Border>

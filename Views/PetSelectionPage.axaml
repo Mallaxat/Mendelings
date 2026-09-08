@@ -10,115 +10,407 @@
         >
 
     <Grid x:Name="GridMainSelect"
-          ShowGridLines="True"
-          ColumnDefinitions="1*,1*"
-          RowDefinitions="1*,6*,1*"
-          Margin="10">
-   
-        <ListBox x:Name="PetsItemsListBox"
-                 Grid.Column="0"
-                 Grid.Row="1"
-                 ItemsSource="{Binding PetsItemsList}"
-                 SelectedItem="{Binding SelectPet, Mode=TwoWay}">
+          ShowGridLines="False"
+          ColumnDefinitions="1*,2*">
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border Padding="8"
-                            Background="Transparent"
-                            Tapped="PetItem_Tapped">
-                        <TextBlock Text="{Binding ItemPets.Name}"/>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+        <!--Задний фон-->
+        <Grid Grid.Column="0"
+              Grid.ColumnSpan="2"
+              ShowGridLines="False"
+              RowDefinitions="1*,1*,1*"
+              ColumnDefinitions="1*,1*"
+              >
+            <Image Grid.Row="0"
+                   Grid.RowSpan="3"
+                   Grid.Column="0" Grid.ColumnSpan="2"
+                   Stretch="Fill"
+                   Source="/Assets/Level2/BackgroundNonCarpet.png"/>
 
-        </ListBox>
-      
-        <Grid Name="SelectPetGrid"
+
+        </Grid>
+        <Grid Grid.Column="0"
               ShowGridLines="True"
-              Grid.Column="1"
-              Grid.Row="1"
-              ColumnDefinitions="auto,1*">
+              RowDefinitions="1*,6*">
+
+            <!--Лист-->
+            <ListBox x:Name="PetsItemsListBox"
+                     Grid.Column="0"
+                     Grid.Row="1"
+                     ItemsSource="{Binding PetsItemsList}"
+                     SelectedItem="{Binding SelectPet, Mode=TwoWay}"
+                     Margin="5"
+                     CornerRadius="5"
+                     Background="#80FFFFFF">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            CornerRadius="5"
+                            Padding="15"
+                            Background="#d8ecfc"
+                            Tapped="PetItem_Tapped">
+                            <Grid
+                                ColumnDefinitions="1*,1*"
+                                ColumnSpacing="10">
+                                <TextBlock Text="{Binding ItemPets.Name}"
+                                           Grid.Column="0"
+                                           Foreground="#17396D"
+                                           FontFamily="Segoe UI"
+                                           FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding ItemPets.Sex}"
+                                           Grid.Column="1"
+                                           Foreground="#17396D"
+                                           FontFamily="Segoe UI"
+                                           FontWeight="SemiBold"/>
+                                
+                            </Grid>
+                            
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+
+            <Border Margin="5"
+                    Grid.Row="0"
+                    Background="#d8ecfc"
+                    CornerRadius="9"
+                    Padding="2">
+                <Label Content="Доступные для выбора питомцы"
+                       Grid.Column="0" Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       Margin="0,0,0,0"
+                       Classes="TextStyle"/>
+            </Border>
+
+
+        </Grid>
+
+
+        <!--Инфа-->
+        <Grid Grid.Column="1"
+              ShowGridLines="True"
+              RowDefinitions="2*,1*"
+              ColumnDefinitions="2*,1*"
+              >
+            <Image Grid.Row="0"
+                   Grid.RowSpan="2"
+                   Grid.Column="0"
+                   Margin="15,15,15,0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Stretch="Uniform"
+                   Source="/Assets/Level2/Carpet.png"/>
+            <Border Grid.Column="1"
+                    Grid.RowSpan="2"
+                    Background="#f4f9fd"
+                    VerticalAlignment="Top"
+                    CornerRadius="10"
+                    Padding="0,5,0,15">
+
+                <StackPanel
+                    Grid.Row="0"
+                    Spacing="5">
+                    <Grid RowDefinitions="1*,1*">
+                        <Border Margin="1,5,1,0"
+                                Background="#d8ecfc"
+                                CornerRadius="9"
+                                Padding="2">
+                            <Label Content="Информация о питомце"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="13"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,0"
+                                   Classes="TextStyle"/>
+                        </Border>
+                    </Grid>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Имя:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.Name}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Пол:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.Sex}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Поколение:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.Generation}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Настроение:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.Mood}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#17396D"
+                            Height="2"
+                            CornerRadius="5"/>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Ген тела:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.BodyGene}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Ген головы:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.HeadGene}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Ген хвоста:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.TailGene}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Ген глаз:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.EyesGene}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+                    <Border Margin="10,0,10,0"
+                            Background="#d8ecfc"
+                            CornerRadius="9"
+                            Padding="2">
+                        <Grid ColumnDefinitions="1*,1*">
+                            <Label Content="Ген ушей:"
+                                   Grid.Column="0" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                            <Label Content="{Binding SelectPet.ItemPets.EarsGene}"
+                                   Grid.Column="1" Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="12"
+                                   FontWeight="Bold"
+                                   Classes="TextStyle"/>
+                        </Grid>
+                    </Border>
+
+                </StackPanel>
+            </Border>
+
+            <!--Питомец-->
             <Grid x:Name="ImagePetGrid"
-                  Grid.Column="0">
+                  Grid.Column="0"
+                  Grid.Row="0" Grid.RowSpan="2"
+                  VerticalAlignment="Bottom"
+                  HorizontalAlignment="Center" 
+                  Margin="10,10,10,60">    
+
                 <Image x:Name="BodySelectPetImage"
                        Source="{Binding SelectPet.ItemAppearancePets.BodyImage}"
                        ZIndex="2"
+                       Margin="10,10,10,60"
                        Classes="Breathing"/>
 
                 <Image x:Name="HeadSelectPetImage"
+                       Margin="10,10,10,60"
                        Source="{Binding SelectPet.ItemAppearancePets.HeadImage}"
                        ZIndex="3"/>
 
                 <Image x:Name="TailSelectPetImage"
+                       Margin="10,10,10,60"
                        Source="{Binding SelectPet.ItemAppearancePets.TailImage}"
                        ZIndex="1"
                        Classes="TailMove"/>
 
                 <Image x:Name="EyesSelectPetImage"
+                       Margin="10,10,10,60"
                        Source="{Binding SelectPet.ItemAppearancePets.EyesImage}"
                        ZIndex="5"
                        Classes="Blink AutoBlink"/>
 
                 <Image x:Name="EyesCloseSelectPetImage"
+                       Margin="10,10,10,60"
                        Source="{Binding SelectPet.ItemAppearancePets.EyesCloseImage}"
                        ZIndex="4"/>
 
                 <Image x:Name="EarsSelectPetImageLeft"
+                       Margin="10,10,10,60"
                        Source="{Binding SelectPet.ItemAppearancePets.EarsLeftImage}"
                        ZIndex="2"
                        Classes="EarLeftMove"
                        RenderTransformOrigin="38%,22%"/>
 
                 <Image x:Name="EarsSelectPetImageRight"
+                       Margin="10,10,10,60"
                        Source="{Binding SelectPet.ItemAppearancePets.EarsRightImage}"
                        ZIndex="2"
                        Classes="EarRightMove"
                        RenderTransformOrigin="62%,22%"/>
 
                 <Image x:Name="HornsSelectPetImage"
+                       Margin="10,10,10,60"
                        Source="{Binding SelectPet.ItemAppearancePets.HornsImage}"
                        ZIndex="1"/>
+            </Grid>
 
-                </Grid>
-            <StackPanel x:Name="InfoStackPanel"
-                        Grid.Column="1">
-                <Label x:Name="SelectNameLabel"
-                       Content="{Binding SelectPet.ItemPets.Name, StringFormat='Имя: {0}'}"/>
-                <Label x:Name="SelectSexLabel"
-                       Content="{Binding SelectPet.ItemPets.Sex, StringFormat='Пол: {0}'}"/>
-                <Label x:Name="SelectGenerationLabel"
-                       Content="{Binding SelectPet.ItemPets.Generation, StringFormat='Поколение: {0}'}"/>
-                <Label x:Name="SelectBodyLabel"
-                       Content="{Binding SelectPet.ItemPets.BodyGene, StringFormat='Тело: {0}'}"/> 
-                <Label x:Name="SelectHeadLabel"
-                       Content="{Binding SelectPet.ItemPets.HeadGene, StringFormat='Голова: {0}'}"/> 
-                <Label x:Name="SelectTailLabel"
-                       Content="{Binding SelectPet.ItemPets.TailGene, StringFormat='Хвост: {0}'}"/>
-                <Label x:Name="SelectEarsLabel"
-                       Content="{Binding SelectPet.ItemPets.EarsGene, StringFormat='Уши: {0}'}"/>
-                <Label x:Name="SelectEyesLabel"
-                       Content="{Binding SelectPet.ItemPets.EyesGene, StringFormat='Глаза: {0}'}"/>
-                <Label x:Name="SelectHealthLabel"
-                       Content="{Binding SelectPet.ItemPets.Health, StringFormat='Здоровье: {0}'}"/>
-                <Label x:Name="SelectHungryLabel"
-                       Content="{Binding SelectPet.ItemPets.Hunger, StringFormat='Голод: {0}'}"/>
-                <Label x:Name="SelectMoodLabel"
-                       Content="{Binding SelectPet.ItemPets.Mood, StringFormat='Настроение: {0}'}"/>
-                <Label x:Name="SelectSleepLabel"
-                       Content="{Binding SelectPet.ItemPets.IsSleeping, StringFormat='Спит: {0}'}"/>
-
-            </StackPanel>
-        </Grid>
-        <Button x:Name="SendPetButton"
+            <!--Кнопка-->
+           <Button x:Name="SendPetButton"
                 Grid.Row="2"
-                Grid.Column="0"
+                Grid.Column="1"
                 Grid.ColumnSpan="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                Content="Выбрать"
+                Margin="0,0,0,30"
                 Click="SendPetButton_Click"
-               
-            />
+                Classes="ButtonStyle"
+                >
+               <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/Level1/Buttons/icon_select.png"
+                               Width="25"
+                               Height="20"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Stretch="Uniform"/>
+                        <TextBlock Text="Выбрать питомца"
+                                   FontFamily="Segoe UI"
+                                   FontWeight="SemiBold"
+                                   Foreground="#d8ecfc"/>
+
+                    </StackPanel>
+           </Button>
+
+
+
+        </Grid>
+        
+        
     </Grid>
 
 </Window>

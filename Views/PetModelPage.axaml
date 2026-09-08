@@ -15,7 +15,8 @@
               Height="450"
               Width="900"
               RowDefinitions="1*,3*"
-              ColumnDefinitions="2*,3*,1*"
+              ColumnDefinitions="2*,3*,auto"
+              ColumnSpacing="15"
               Margin="5"
               >
 
@@ -39,7 +40,7 @@
                                    Width="20"
                                    Height="20"
                                    Source="/Assets/Level1/Info/Icons/icon_paw.png"
-                                   Stretch="Uniform" 
+                                   Stretch="Uniform"
                                    />
                             <Label Content="Информация о питомце"
                                    Grid.Column="0" Grid.ColumnSpan="2"
@@ -213,120 +214,13 @@
             </Border>
 
             <!-- Центральная часть -->
-
-            <!-- Действия -->
-            <Border Grid.Row="0"
-                    Grid.Column="1"
-                    HorizontalAlignment="Center"
-                    Background="#d8ecfc"
-                    CornerRadius="10"
-                    Padding="15"
-                    Margin="10,15,10,15">
-                <StackPanel Orientation="Horizontal"
-                            Spacing="10">
-                    <Button x:Name="FeedButton"
-                            Command="{Binding FeedCommand}"
-                            IsEnabled="false"
-                            Padding="10,8,10,15"
-                            CornerRadius="10"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Classes="ButtonStyle">
-                        <StackPanel Spacing="0">
-                            <Image Source="/Assets/Level1/Buttons/icon_feed.png"
-                                   Width="25"
-                                   Height="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Stretch="UniformToFill"
-                                   />
-                            <TextBlock Text="Кормить"
-                                       FontFamily="Segoe UI"
-                                       FontWeight="SemiBold"
-                                       Foreground="#d8ecfc"/>
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="PlayButton"
-                            Command="{Binding PlayCommand}"
-                            IsEnabled="false"
-                            Padding="10,8,10,15"
-                            CornerRadius="10"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Classes="ButtonStyle">
-                        <StackPanel Spacing="0">
-                            <Image Source="/Assets/Level1/Buttons/icon_game.png"
-                                   Width="25"
-                                   Height="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Stretch="UniformToFill"
-                                   />
-                            <TextBlock Text="Играть"
-                                       FontFamily="Segoe UI"
-                                       FontWeight="SemiBold"
-                                       Foreground="#d8ecfc"/>
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="SleepButton"
-                            Command="{Binding StartSleepCommand}"
-                            IsEnabled="false"
-                            Padding="10,8,10,15"
-                            CornerRadius="10"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Classes="ButtonStyle"
-                            Click="SleepButton_Click">
-                        <StackPanel Spacing="0">
-                            <Image Source="/Assets/Level1/Buttons/icon_sleep.png"
-                                   Width="25"
-                                   Height="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Stretch="Uniform"
-                                   />
-                            <TextBlock Text="Спать"
-                                       FontFamily="Segoe UI"
-                                       FontWeight="SemiBold"
-                                       Foreground="#d8ecfc"/>
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="WakeUpButton"
-                            Command="{Binding WakeUpCommand}"
-                            IsEnabled="false"
-                            Padding="10,8,10,15"
-                            CornerRadius="10"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Classes="ButtonStyle"
-                            Click="WakeUpButton_Click"
-                            >
-                        <StackPanel Spacing="0">
-                            <Image Source="/Assets/Level1/Buttons/icon_awake.png"
-                                   Width="25"
-                                   Height="20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Stretch="Uniform"
-                                   />
-                            <TextBlock Text="Подъем"
-                                       FontFamily="Segoe UI"
-                                       FontWeight="SemiBold"
-                                       Foreground="#d8ecfc"/>
-                        </StackPanel>
-                    </Button>
-
-                </StackPanel>
-            </Border>
-
             <!-- Питомец -->
             <Grid Grid.Row="1"
                   Grid.Column="1">
-                
                 <Image x:Name="BodyImage"
                        Source="{Binding AppearanceCurrent.BodyImage}"
                        ZIndex="2"
-                       Classes="Breathing"/>     
+                       Classes="Breathing"/>
                 <Image x:Name="HeadImage"
                        Source="{Binding AppearanceCurrent.HeadImage}"
                        ZIndex="3"/>
@@ -339,8 +233,8 @@
                        ZIndex="5"
                        Classes="Blink AutoBlink"/>
                 <Image x:Name="EyesCloseImage"
-                   Source="{Binding AppearanceCurrent.EyesCloseImage}"
-                   ZIndex="4"/>
+                       Source="{Binding AppearanceCurrent.EyesCloseImage}"
+                       ZIndex="4"/>
                 <Image x:Name="EarsImageLeft"
                        Source="{Binding AppearanceCurrent.EarsLeftImage}"
                        ZIndex="2"
@@ -355,6 +249,121 @@
                        Source="{Binding AppearanceCurrent.HornsImage}"
                        ZIndex="1"/>
             </Grid>
+            <!-- Действия -->
+            <Border Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    Background="#d8ecfc"
+                    CornerRadius="10"
+                    Padding="15"
+                    Margin="10,15,10,15">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Spacing="23">
+                    <Button x:Name="FeedButton"
+                            Command="{Binding FeedCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            CornerRadius="10"
+                            Width="75"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle">
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_feed.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="UniformToFill"
+                                   />
+                            <TextBlock Text="Кормить"
+                                       FontSize="13"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="PlayButton"
+                            Command="{Binding PlayCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            Width="75"
+                            CornerRadius="10"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle">
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_game.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="UniformToFill"
+                                   />
+                            <TextBlock Text="Играть"
+                                       FontSize="13"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SleepButton"
+                            Command="{Binding StartSleepCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            Width="75"
+                            CornerRadius="10"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle"
+                            Click="SleepButton_Click">
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_sleep.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="Uniform"
+                                   />
+                            <TextBlock Text="Спать"
+                                       FontSize="13"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="WakeUpButton"
+                            Command="{Binding WakeUpCommand}"
+                            IsEnabled="false"
+                            Padding="10,8,10,15"
+                            CornerRadius="10"
+                            Width="75"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Classes="ButtonStyle"
+                            Click="WakeUpButton_Click"
+                            >
+                        <StackPanel Spacing="0">
+                            <Image Source="/Assets/Level1/Buttons/icon_awake.png"
+                                   Width="25"
+                                   Height="20"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Stretch="Uniform"
+                                   />
+                            <TextBlock Text="Подъем"
+
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#d8ecfc"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+
+
 
             <!-- Правая часть -->
             <Border Grid.Column="2"
@@ -366,13 +375,31 @@
                 <Button Grid.Column="2"
                         Grid.Row="0"
                         VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
                         FontSize="14"
-                        Content="Выбрать&#10;Любимца"
                         Click="Button_Click"
-                        Classes="ButtonMain"/>
+                        Classes="ButtonStyle">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/Level1/Buttons/icon_select.png"
+                               Width="25"
+                               Height="20"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Stretch="Uniform"
+                               />
+                        <TextBlock Text="Выбрать питомца"
+                                   FontFamily="Segoe UI"
+                                   FontWeight="SemiBold"
+                                   Foreground="#d8ecfc"/>
+
+                    </StackPanel>
+
+
+
+                </Button>
             </Border>
 
         </Grid>
-        </Viewbox>
+    </Viewbox>
 
 </UserControl>
