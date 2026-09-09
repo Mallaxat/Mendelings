@@ -7,14 +7,15 @@
         x:Class="Mendelings.Views.MainWindow"
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Mendelings">
+        Title="Mendelings"
+        WindowState="Maximized"
+        MinHeight="500" MinWidth="900">
 
     <Design.DataContext>
         <vm:MainViewModel />
     </Design.DataContext>
-    <Grid
-        ShowGridLines="False"
-        RowDefinitions="1*,10*" >
+
+    <Grid ClipToBounds="True">
 
         <Image x:Name="FoneImage"
                Grid.Column="0"
@@ -24,89 +25,94 @@
                Stretch="Fill"
                IsHitTestVisible="False"/>
 
-        <ContentControl x:Name="PageContent"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"
-                        Grid.Row="1"/>
-        <Border Grid.Row="0"
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Background="#B3f4f9fd"
-                CornerRadius="5" >
+            <Grid ShowGridLines="False"
+                  RowDefinitions="1*,10*" >
 
-            <Grid Grid.Row="0"
-                  ShowGridLines="False"
-                  ColumnDefinitions="4*,3.5*,3.5*,3.5*,3.5*,4*">
-                <Button x:Name="MainButton"
+                <ContentControl x:Name="PageContent"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch"
+                                Grid.Row="1"/>
+                <Border Grid.Row="0"
                         Grid.Column="1"
-                        VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch"
-                        Margin="5"
-                        CornerRadius="5"
-                        Click="MainButton_Click"
-                        Classes="ButtonStyle">
-                    <Label Content="Уход за питомцем"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Classes="Text.Style"
-                           FontSize="13"
-                           FontWeight="Bold"/>
-                </Button>
-                <Button x:Name="BreedingButton"
-                        Grid.Column="2"
-                        Command="{Binding ChangeFone2}"
                         VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5"
-                        CornerRadius="5"
-                        Click="BreedingButton_Click"
-                        Classes="ButtonStyle">
-                    <Label Content="К разведению"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Classes="Text.Style"
-                           FontSize="13"
-                           FontWeight="Bold"/>
+                        Background="#B3f4f9fd"
+                        CornerRadius="5" >
 
-                </Button>
-                <Button x:Name="FamilyButton"
-                        Grid.Column="3"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5"
-                        CornerRadius="5"
-                        Click="FamilyButton_Click"
-                        Classes="ButtonStyle">
-                    <Label Content="К древу"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Classes="Text.Style"
-                           FontSize="13"
-                           FontWeight="Bold"/>
-                </Button>
-                <Button x:Name="CollectionButton"
-                        Grid.Column="4"
-                        VerticalAlignment="Stretch"
-                        HorizontalAlignment="Stretch"
-                        Margin="5"
-                        CornerRadius="5"
-                        Click="CollectionButton_Click"
-                        Classes="ButtonStyle">
-                    <Label Content="Лаборатория"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Classes="Text.Style"
-                           FontSize="13"
-                           FontWeight="Bold"/>
-                </Button>
+                    <Grid Grid.Row="0"
+                          ShowGridLines="False"
+                          ColumnDefinitions="4*,3.5*,3.5*,3.5*,3.5*,4*">
+                        <Button x:Name="MainButton"
+                                Grid.Column="1"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Margin="5"
+                                CornerRadius="5"
+                                Command="{Binding ChangeFone1}"
+                                Click="MainButton_Click"
+                                Classes="ButtonStyle">
+                            <Label Content="Уход за питомцем"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Classes="Text.Style"
+                                   FontSize="13"
+                                   FontWeight="Bold"/>
+                        </Button>
+                        <Button x:Name="BreedingButton"
+                                Grid.Column="2"
+                                Command="{Binding ChangeFone2}"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Margin="5"
+                                CornerRadius="5"
+                                Click="BreedingButton_Click"
+                                Classes="ButtonStyle">
+                            <Label Content="К разведению"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Classes="Text.Style"
+                                   FontSize="13"
+                                   FontWeight="Bold"/>
+
+                        </Button>
+                        <Button x:Name="FamilyButton"
+                                Grid.Column="3"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Margin="5"
+                                CornerRadius="5"
+                                Click="FamilyButton_Click"
+                                Classes="ButtonStyle">
+                            <Label Content="К древу"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Classes="Text.Style"
+                                   FontSize="13"
+                                   FontWeight="Bold"/>
+                        </Button>
+                        <Button x:Name="CollectionButton"
+                                Grid.Column="4"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Margin="5"
+                                CornerRadius="5"
+                                Click="CollectionButton_Click"
+                                Classes="ButtonStyle">
+                            <Label Content="Лаборатория"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Classes="Text.Style"
+                                   FontSize="13"
+                                   FontWeight="Bold"/>
+                        </Button>
+
+                    </Grid>
+
+                </Border>
 
             </Grid>
 
-        </Border>
-           
     </Grid>
-
 </Window>

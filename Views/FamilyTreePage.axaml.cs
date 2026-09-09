@@ -13,6 +13,12 @@ namespace Mendelings.Views
         public FamilyTreePage()
         {
             InitializeComponent();
+            SelectButton.IsEnabled = true;
+            MotherGrid.IsVisible = false;
+            FatherGrid.IsVisible = false;
+            SelectGrid.IsVisible = false;
+            ListGrid.IsVisible = false;
+
         }
         public FamilyTreePage(FamilyTreeModel _model) : this()
         {
@@ -21,6 +27,7 @@ namespace Mendelings.Views
 
         private async void SelectButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+
             SelectButton.IsEnabled = false;
             Window? mainWindow = TopLevel.GetTopLevel(this) as Window;
             PetSelectionPage page = App.Services.GetRequiredService<PetSelectionPage>();
@@ -39,6 +46,10 @@ namespace Mendelings.Views
                 await MyViewModel.LoadPets();
 
             }
+            MotherGrid.IsVisible = true;
+            FatherGrid.IsVisible = true;
+            SelectGrid.IsVisible = true;
+            ListGrid.IsVisible = true;
             SelectButton.IsEnabled = true;
         }
     }

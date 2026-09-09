@@ -6,19 +6,25 @@
              xmlns:vm="using:Mendelings.ViewModels"
              x:Class="Mendelings.Views.PetUnlockCollectionPage"
              x:DataType="vm:PetUnlockCollectionModel">
- 
+
     <Grid x:Name="MainCollectionGrid"
           Margin="5">
-        <ScrollViewer HorizontalAlignment="Center"
-            VerticalScrollBarVisibility="Auto">
 
-            <ItemsControl ItemsSource="{Binding PetCollection}">
+        <ScrollViewer HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+
+            <ItemsControl ItemsSource="{Binding PetCollection}"
+                          HorizontalAlignment="Stretch">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
+
                         <WrapPanel Orientation="Horizontal"
-                                   HorizontalAlignment="Left"
+                                   HorizontalAlignment="Stretch"
                                    VerticalAlignment="Top"/>
+
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
@@ -28,15 +34,19 @@
                         <Grid Width="140"
                               Height="140"
                               Margin="5">
+
                             <!-- Закрытая карточка -->
                             <Border Background="Gray"
                                     CornerRadius="10">
+
                                 <TextBlock Text="?"
                                            FontSize="40"
                                            FontWeight="Bold"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"/>
+
                             </Border>
+
 
                             <!-- Открытая карточка -->
                             <Grid IsVisible="{Binding IsUnlocked}"
@@ -70,6 +80,7 @@
                                     </StackPanel>
                                 </ToolTip.Tip>
 
+
                                 <Image Source="{Binding AppearancePet.BodyImage}"
                                        Stretch="Uniform"
                                        ZIndex="2"/>
@@ -80,7 +91,7 @@
 
                                 <Image Source="{Binding AppearancePet.TailImage}"
                                        Stretch="Uniform"
-                                       ZIndex="1" />
+                                       ZIndex="1"/>
 
                                 <Image Source="{Binding AppearancePet.EyesImage}"
                                        Stretch="Uniform"
@@ -106,9 +117,6 @@
 
                             </Grid>
 
-
-
-
                         </Grid>
 
                     </DataTemplate>
@@ -117,10 +125,6 @@
             </ItemsControl>
 
         </ScrollViewer>
-
-
-
-
 
     </Grid>
 

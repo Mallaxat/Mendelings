@@ -5,142 +5,215 @@
         xmlns:vm="using:Mendelings.ViewModels"
         mc:Ignorable="d"
         x:Class="Mendelings.Views.RegistrationWindow"
-        x:DataType="vm:RegistrationViewModel">
+        x:DataType="vm:RegistrationViewModel"
+        Title="Mendelings"
+        WindowState="Maximized"
+        MinHeight="500" MinWidth="900">
 
 
+<Grid ClipToBounds="True">
+
+    <Image x:Name="FoneImage"
+           Grid.Column="0"
+           Grid.Row="0"
+           Grid.RowSpan="2"
+           Source="/Assets/Level0/FoneReg.png"
+           Stretch="Fill"
+           IsHitTestVisible="False"/>
+
+    <Viewbox Stretch="Uniform"
+             StretchDirection="Both"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
+
+        <Grid ShowGridLines="False"
+              RowDefinitions="1*,10*">
+
+            <Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                    <Border CornerRadius="5"
+                            Margin="10"
+                        Background="#90d8ecfc">
+                    <StackPanel Width="350"
+                                Margin="20"
+                                Spacing="15"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="Mendelings"
+                                   FontSize="32"
+                                   FontFamily="Segoe UI"
+                                   FontWeight="SemiBold"
+                                   Foreground="#17396D"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="Вход"
+                                   FontSize="22"
+                                   FontFamily="Segoe UI"
+                                   FontWeight="SemiBold"
+                                   Foreground="#17396D"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="Электронная почта/Логин"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="Segoe UI"
+                                   FontWeight="SemiBold"
+                                   Foreground="#17396D"/>
+
+                        <TextBox Text="{Binding Email}"
+                                 Watermark="example@mail.ru"
+                                 FontFamily="Segoe UI"
+                                 FontWeight="SemiBold"
+                                 Foreground="White"/>
+
+                        <TextBlock Text="Пароль"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="Segoe UI"
+                                   FontWeight="SemiBold"
+                                   Foreground="#17396D"/>
+
+                        <TextBox Text="{Binding Password}"
+                                 PasswordChar="●"
+                                 Watermark="Введите пароль"
+                                 FontFamily="Segoe UI"
+                                 FontWeight="SemiBold"
+                                 Foreground="White"/>
+
+                        <Button Classes="ButtonStyle"
+                                Command="{Binding LoginCommand}"
+                                FontFamily="Segoe UI"
+                                FontWeight="SemiBold"
+                                Foreground="#17396D"
+                                HorizontalAlignment="Stretch">
+                            <Label Content="Войти" 
+                                   HorizontalAlignment="Center"
+                                   Classes="TextStyle"/>
+                        </Button>
+
+                        <Button 
+                                Classes="ButtonStyle"
+                                Command="{Binding ShowRegistrationCommand}"
+                                IsVisible="{Binding !IsRegistrationMode}"
+                                FontFamily="Segoe UI"
+                                FontWeight="SemiBold"
+                                Foreground="#17396D"
+                                HorizontalAlignment="Stretch">
+                            <Label Content="Регистрация"
+                                   HorizontalAlignment="Center"
+                                   Classes="TextStyle"/>
+                        </Button>
+
+                        <StackPanel IsVisible="{Binding IsRegistrationMode}"
+                                    Spacing="12">
+
+                            <TextBlock Text="Регистрация"
+                                       FontSize="20"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#17396D"
+                                       HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="Логин"
+                                       HorizontalAlignment="Center"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#17396D"/>
+
+                            <TextBox Text="{Binding Username}"
+                                     Watermark="Придумайте логин"
+
+                                     FontFamily="Segoe UI"
+                                     FontWeight="SemiBold"
+                                     Foreground="White"/>
+
+                            <Button 
+                                    Classes="ButtonStyle"
+                                    Command="{Binding SendCodeCommand}"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="SemiBold"
+                                    Foreground="#17396D"
+                                    HorizontalAlignment="Stretch">
+                            <Label Content="Получить код подтверждения"
+                                           HorizontalAlignment="Center"
+                                           Classes="TextStyle"/>
+                                </Button>
 
 
-    <Grid>
+                            <StackPanel IsVisible="{Binding CodeSent}"
+                                        Spacing="10">
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <TextBlock Text="Введите код из письма"
+                                           FontFamily="Segoe UI"
+                                           FontWeight="SemiBold"
+                                           Foreground="#17396D"/>
 
-            <StackPanel Width="350"
-                        Margin="20"
-                        Spacing="15"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                                <TextBox Text="{Binding Code}"
+                                         Watermark="123456"
+                                         FontFamily="Segoe UI"
+                                         FontWeight="SemiBold"
+                                         Foreground="White"/>
 
-                <TextBlock Text="Mendelings"
-                           FontSize="32"
-                           FontWeight="Bold"
-                           HorizontalAlignment="Center"/>
+                                <Button Classes="ButtonStyle"
+                                        Command="{Binding VerifyCodeCommand}"
+                                        FontFamily="Segoe UI"
+                                        FontWeight="SemiBold"
+                                        Foreground="#17396D"
+                                        HorizontalAlignment="Stretch">
+                                    <Label Content="Подтвердить код"
+                                           HorizontalAlignment="Center"
+                                           Classes="TextStyle"/>
+                                </Button>
 
-                <TextBlock Text="Вход"
-                           FontSize="22"
-                           FontWeight="Bold"
-                           HorizontalAlignment="Center"/>
+                            </StackPanel>
 
+                            <TextBlock Text="Почта подтверждена"
+                                       IsVisible="{Binding EmailVerified}"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="SemiBold"
+                                       Foreground="#17396D"
+                                       HorizontalAlignment="Center"/>
 
-                <!-- Email -->
+                            <Button Classes="ButtonStyle"
+                                    Command="{Binding RegisterCommand}"
+                                    IsVisible="{Binding EmailVerified}"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="SemiBold"
+                                    Foreground="#17396D"
+                                    HorizontalAlignment="Stretch">
+                            <Label Content="Зарегистрироваться"
+                                           HorizontalAlignment="Center"
+                                           Classes="TextStyle"/>
+                                </Button>
 
-                <TextBlock Text="Электронная почта"/>
+                            <Button Classes="ButtonStyle"
+                                    Command="{Binding CancelRegistrationCommand}"
+                                    FontFamily="Segoe UI"
+                                    FontWeight="SemiBold"
+                                    Foreground="#17396D"
+                                    HorizontalAlignment="Stretch">
+                                <Label Content="Отмена"
+                                           HorizontalAlignment="Center"
+                                           Classes="TextStyle"/>
+                                </Button>
 
-                <TextBox Text="{Binding Email}"
-                         Watermark="example@mail.ru"/>
+                        </StackPanel>
 
-
-                <!-- Пароль -->
-
-                <TextBlock Text="Пароль"/>
-
-                <TextBox Text="{Binding Password}"
-                         PasswordChar="●"
-                         Watermark="Введите пароль"/>
-
-
-                <!-- Кнопка входа -->
-
-                <Button Content="Войти"
-                        Command="{Binding LoginCommand}"
-                        HorizontalAlignment="Stretch"/>
-
-
-                <!-- Открыть регистрацию -->
-
-                <Button Content="Регистрация"
-                        Command="{Binding ShowRegistrationCommand}"
-                        IsVisible="{Binding !IsRegistrationMode}"
-                        HorizontalAlignment="Stretch"/>
-
-
-                <!-- Блок регистрации -->
-
-                <StackPanel IsVisible="{Binding IsRegistrationMode}"
-                            Spacing="12">
-
-                    <TextBlock Text="Регистрация"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"/>
-
-
-                    <!-- Логин -->
-
-                    <TextBlock Text="Логин"/>
-
-                    <TextBox Text="{Binding Username}"
-                             Watermark="Придумайте логин"/>
-
-
-                    <!-- Отправить код -->
-
-                    <Button Content="Получить код подтверждения"
-                            Command="{Binding SendCodeCommand}"
-                            HorizontalAlignment="Stretch"/>
-
-
-                    <!-- Ввод кода -->
-
-                    <StackPanel IsVisible="{Binding CodeSent}"
-                                Spacing="10">
-
-                        <TextBlock Text="Введите код из письма"/>
-
-                        <TextBox Text="{Binding Code}"
-                                 Watermark="123456"/>
-
-                        <Button Content="Подтвердить код"
-                                Command="{Binding VerifyCodeCommand}"
-                                HorizontalAlignment="Stretch"/>
+                        <TextBlock Text="{Binding Message}"
+                                   TextWrapping="Wrap"
+                                   FontFamily="Segoe UI"
+                                   FontWeight="SemiBold"
+                                   Foreground="#17396D"
+                                   HorizontalAlignment="Center"/>
 
                     </StackPanel>
+                        </Border>
+                </ScrollViewer>
+            </Grid>
 
+        </Grid>
 
-                    <!-- Почта подтверждена -->
+    </Viewbox>
 
-                    <TextBlock Text="Почта подтверждена"
-                               IsVisible="{Binding EmailVerified}"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"/>
-
-
-                    <!-- Завершить регистрацию -->
-
-                    <Button Content="Зарегистрироваться"
-                            Command="{Binding RegisterCommand}"
-                            IsVisible="{Binding EmailVerified}"
-                            HorizontalAlignment="Stretch"/>
-
-
-                    <!-- Отмена регистрации -->
-
-                    <Button Content="Отмена"
-                            Command="{Binding CancelRegistrationCommand}"
-                            HorizontalAlignment="Stretch"/>
-
-                </StackPanel>
-
-
-                <!-- Сообщения -->
-
-                <TextBlock Text="{Binding Message}"
-                           TextWrapping="Wrap"
-                           HorizontalAlignment="Center"/>
-
-            </StackPanel>
-
-        </ScrollViewer>
-
-    </Grid>
-
+</Grid>
 </Window>

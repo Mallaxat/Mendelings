@@ -18,6 +18,7 @@ namespace Mendelings.ViewModels
 
         private readonly PetRepository? _petRepository;
         private readonly AppearancePetService? _apearancePetService;
+        private readonly CurrentUserService _currentUserService;
 
 
         private List<Pet> PetsList;
@@ -29,17 +30,21 @@ namespace Mendelings.ViewModels
         private PetSelectionItem? selectPet;
 
 
-        public PetSelectionViewModel(PetRepository petRepository, AppearancePetService apearancePetService)
+        public PetSelectionViewModel(PetRepository petRepository, AppearancePetService apearancePetService, CurrentUserService currentUserService)
         {
             _petRepository = petRepository;
             _apearancePetService = apearancePetService;
+            _currentUserService = currentUserService;
         }
 
         public async Task LoadItemsPetsAsync(PetSex sex)
         {
 
-            if (PetsItemsList == null) PetsItemsList = new List<PetSelectionItem>();            
-            PetsList = await _petRepository.GetAllAsync();
+            if (PetsItemsList == null) PetsItemsList = new List<PetSelectionItem>();
+            
+            int userId = _currentUserService.UserId.Value;
+
+            PetsList = await _petRepository.GetByUserIdAsync(userId);
 
             PetsList = PetsList.Where(x => x.Sex == sex).ToList();
 
@@ -56,9 +61,9 @@ namespace Mendelings.ViewModels
         }
         public async Task LoadItemsPetsAsync()
         {
-
+            int userId = _currentUserService.UserId.Value;
             if (PetsItemsList == null) PetsItemsList = new List<PetSelectionItem>();
-            PetsList = await _petRepository.GetAllAsync();
+            PetsList = await _petRepository.GetByUserIdAsync(userId);
 
             PetsItemsList.Clear();
             foreach (Pet pet in PetsList)
