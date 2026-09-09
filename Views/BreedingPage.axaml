@@ -3,246 +3,461 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:Mendelings.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
              x:Class="Mendelings.Views.BreedingPage"
              x:DataType="vm:BreedingViewModel">
-
+    <Viewbox>
     <Grid x:Name="MainGrid"
-          ShowGridLines="True"
+          Height="450"
+          Width="900"
+          ShowGridLines="False"
           ColumnDefinitions="1*,1*,1*"
-          ColumnSpacing="10"
-          Margin="10">
-        
-        <Grid x:Name="CenterChildGrid"
-              Grid.Column="1"
-              ShowGridLines="True"
-              RowDefinitions="1*,6*,auto"
-              ColumnDefinitions="1*,5*,1*"
-              RowSpacing="2"
-              Margin="10">
-            <Button Grid.Column="1"
+          ColumnSpacing="15"
+          RowDefinitions="1*,2*,6*"
+          >
+        <!--Ковры-->
+        <Grid Grid.Row="2" Grid.Column="0"
+              VerticalAlignment="Bottom"
+              RowDefinitions="1*,9*">
+            <Image
+                Grid.Row="1"
+                Margin="0,195,0,0"
+                Stretch="Fill"
+                Source="/Assets/Level2/Carpet2.png"
+                ZIndex="0"/>    
+        </Grid>
+                <Grid Grid.Row="2" Grid.Column="1"
+              VerticalAlignment="Bottom"
+              RowDefinitions="1*,9*">
+            <Image
+                Grid.Row="1"
+                Margin="0,195,0,0"
+                Stretch="Fill"
+                Source="/Assets/Level2/Carpet3.png"
+                ZIndex="0"/>    
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2"
+              VerticalAlignment="Bottom"
+              RowDefinitions="1*,9*">
+            <Image
+                Grid.Row="1"
+                Margin="0,195,0,0"
+                Stretch="Fill"
+                Source="/Assets/Level2/Carpet.png"
+                ZIndex="0"/>    
+        </Grid>
+
+
+        <!--Кнопки-->
+        <Button Grid.Column="1"
                 Grid.Row="0"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Content="Вывести"
-                Command="{Binding BreedAsync}"/>
-            <Grid x:Name="ImageChildGrid"
-                  Grid.Column="1"
-                  Grid.Row="1">
-                <Image x:Name="BodyChildImage"
-                       Source="{Binding AppearanceChild.BodyImage}"
-                       ZIndex="2"
-                       Classes="Breathing"/>
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Margin="5"
+                Command="{Binding BreedAsync}"
+                Classes="ButtonStyle">
+            <Label Content="Вывести"
+                   FontSize="15"
+                   Foreground="#d8ecfc"
+                   FontWeight="Bold"
+                   Classes="TextStyle"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
 
-                <Image x:Name="HeadChildImage"
-                       Source="{Binding AppearanceChild.HeadImage}"
-                       ZIndex="3"/>
+        </Button>
+        <Button x:Name="SelectMaleButton"
+                Grid.Column="2"
+                Grid.Row="0"
+                Margin="5"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Click="SelectMaleButton_Click"
+                Classes="ButtonStyle">
+            <Grid ColumnDefinitions="1*,6*,1*">
+                <Image Grid.Column="0"
+                    Source="/Assets/Level3/icon_boal.png"
+                       Stretch="Uniform"
+                       Width="20"
+                       Height="20"/>
+                <Label Content="Выбрать самца"
+                       Grid.Column="1"
+                       FontSize="15"
+                       Foreground="#d8ecfc"
+                       FontWeight="Bold"
+                       Classes="TextStyle"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+                <Image Grid.Column="2"
+                    Source="/Assets/Level3/icon_boal.png"
+                       Stretch="Uniform"
+                       Width="20"
+                       Height="20"/>
+            </Grid>
+        </Button>
+        <Button x:Name="SelectFemaleButton"
+                Grid.Column="0"
+                Grid.Row="0"
+                Margin="5"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Click="SelectFemaleButton_Click"
+                Classes="ButtonStyle">
+            <Grid ColumnDefinitions="1*,6*,1*">
+                <Image Grid.Column="0"
+                    Source="/Assets/Level3/icon_floyer.png"
+                       Stretch="Uniform"
+                       Width="20"
+                       Height="20"/>
+                <Label Content="Выбрать самку"
+                       Grid.Column="1"
+                       FontSize="15"
+                       Foreground="#d8ecfc"
+                       FontWeight="Bold"
+                       Classes="TextStyle"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+                <Image Grid.Column="2"
+                    Source="/Assets/Level3/icon_floyer.png"
+                       Stretch="Uniform"
+                       Width="20"
+                       Height="20"/>
+            </Grid>
+        </Button>
+        <!--Ребенок-->
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                Background="#80FFFFFF"
+                CornerRadius="5"
+                Margin="2">
+            <Grid Grid.Column="0"
+                  Grid.Row="1"
+                  ColumnDefinitions="1*,1*,1*">
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                    <Label x:Name="ChildPetNameLabel"
+                           Grid.ColumnSpan="2"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.Name, StringFormat='Имя: {0}'}"/>
+                    <Label x:Name="ChildPetSexLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.Sex, StringFormat='Пол: {0}'}"/>
+                    <Label x:Name="ChildPetGenerationLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.Generation, StringFormat='Поколение: {0}'}"/>
 
-                <Image x:Name="TailChildImage"
-                       Source="{Binding AppearanceChild.TailImage}"
-                       ZIndex="1"
-                       Classes="TailMove"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <Label x:Name="ChildPetHeadLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.HeadGene, StringFormat='Голова: {0}'}"/>
+                    <Label x:Name="ChildPetBodyLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.BodyGene, StringFormat='Тело: {0}'}"/>
 
-                <Image x:Name="EyesChildImage"
-                       Source="{Binding AppearanceChild.EyesImage}"
-                       ZIndex="5"
-                       Classes="Blink AutoBlink"/>
+                    <Label x:Name="ChildPetTailLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.TailGene, StringFormat='Хвост: {0}'}"/>
 
-                <Image x:Name="EyesCloseChildImage"
-                       Source="{Binding AppearanceChild.EyesCloseImage}"
-                       ZIndex="4"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <Label x:Name="ChildPetHornsLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.HornsGene, StringFormat='Рога: {0}'}"/>
+                    <Label x:Name="ChildPetEyesLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.EyesGene, StringFormat='Глаза: {0}'}"/>
+                    <Label x:Name="ChildPetEarsLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding ChildPet.EarsGene, StringFormat='Уши: {0}'}"/>
 
-                <Image x:Name="EarsChildImageLeft"
-                       Source="{Binding AppearanceChild.EarsLeftImage}"
-                       ZIndex="2"
-                       Classes="EarLeftMove"
-                       RenderTransformOrigin="38%,22%"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid x:Name="ImageChildGrid"
+              Grid.Column="1"
+              Grid.Row="2"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Bottom"
+              Margin="0,0,0,15">
+            <Image x:Name="BodyChildImage"
+                   Source="{Binding AppearanceChild.BodyImage}"
+                   ZIndex="2"
+                   Classes="Breathing"/>
 
-                <Image x:Name="EarsChildImageRight"
-                       Source="{Binding AppearanceChild.EarsRightImage}"
-                       ZIndex="2"
-                       Classes="EarRightMove"
-                       RenderTransformOrigin="62%,22%"/>
+            <Image x:Name="HeadChildImage"
+                   Source="{Binding AppearanceChild.HeadImage}"
+                   ZIndex="3"/>
 
-                <Image x:Name="HornsChildImage"
-                       Source="{Binding AppearanceChild.HornsImage}"
-                       ZIndex="1"/>
-                </Grid>
-            <StackPanel x:Name="InfoChildStackPanel"
-                        Grid.Row="2"
-                        Grid.Column="1">
-                <Label x:Name="ChildNameLabel"
-                       Content="{Binding ChildPet.Name, StringFormat='Имя: {0}'}"/>
-                <Label x:Name="ChildSexLabel"
-                       Content="{Binding ChildPet.Sex, StringFormat='Пол: {0}'}"/>
-                <Label x:Name="ChildGenerationLabel"
-                       Content="{Binding ChildPet.Generation, StringFormat='Поколение: {0}'}"/>
-                <Label x:Name="ChildBodyLabel"
-                       Content="{Binding ChildPet.BodyGene, StringFormat='Тело: {0}'}"/> 
-                <Label x:Name="ChildHeadLabel"
-                       Content="{Binding ChildPet.HeadGene, StringFormat='Голова: {0}'}"/> 
-                <Label x:Name="ChildTailLabel"
-                       Content="{Binding ChildPet.TailGene, StringFormat='Хвост: {0}'}"/>
-                <Label x:Name="ChildEarsLabel"
-                       Content="{Binding ChildPet.EarsGene, StringFormat='Уши: {0}'}"/>
-                <Label x:Name="ChildEyesLabel"
-                       Content="{Binding ChildPet.EyesGene, StringFormat='Глаза: {0}'}"/>
-            </StackPanel>
+            <Image x:Name="TailChildImage"
+                   Source="{Binding AppearanceChild.TailImage}"
+                   ZIndex="1"
+                   Classes="TailMove"/>
+
+            <Image x:Name="EyesChildImage"
+                   Source="{Binding AppearanceChild.EyesImage}"
+                   ZIndex="5"
+                   Classes="Blink AutoBlink"/>
+
+            <Image x:Name="EyesCloseChildImage"
+                   Source="{Binding AppearanceChild.EyesCloseImage}"
+                   ZIndex="4"/>
+
+            <Image x:Name="EarsChildImageLeft"
+                   Source="{Binding AppearanceChild.EarsLeftImage}"
+                   ZIndex="2"
+                   Classes="EarLeftMove"
+                   RenderTransformOrigin="38%,22%"/>
+
+            <Image x:Name="EarsChildImageRight"
+                   Source="{Binding AppearanceChild.EarsRightImage}"
+                   ZIndex="2"
+                   Classes="EarRightMove"
+                   RenderTransformOrigin="62%,22%"/>
+
+            <Image x:Name="HornsChildImage"
+                   Source="{Binding AppearanceChild.HornsImage}"
+                   ZIndex="1"/>
         </Grid>
-        <Grid x:Name="LeftFemaleGrid"
+        <!--Мать-->
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                HorizontalAlignment="Stretch"
+                Background="#80FFFFFF"
+                CornerRadius="5"
+                Margin="2">
+            <Grid Grid.Column="0"
+                  Grid.Row="1"
+                  ColumnDefinitions="1*,1*,1*">
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                    <Label x:Name="FemaleNameLabel"
+                           Grid.ColumnSpan="2"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.Name, StringFormat='Имя: {0}'}"/>
+                    <Label x:Name="FemaleSexLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.Sex, StringFormat='Пол: {0}'}"/>
+                    <Label x:Name="FemaleGenerationLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.Generation, StringFormat='Поколение: {0}'}"/>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <Label x:Name="FemaleHeadLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.HeadGene, StringFormat='Голова: {0}'}"/>
+                    <Label x:Name="FemaleBodyLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.BodyGene, StringFormat='Тело: {0}'}"/>
+
+                    <Label x:Name="FemaleTailLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.TailGene, StringFormat='Хвост: {0}'}"/>
+
+                </StackPanel>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <Label x:Name="FemaleHornsLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.HornsGene, StringFormat='Рога: {0}'}"/>
+                    <Label x:Name="FemaleEyesLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
+                    <Label x:Name="FemaleEarsLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentFemalePet.EarsGene, StringFormat='Уши: {0}'}"/>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid x:Name="ImageFemaleGrid"
               Grid.Column="0"
-              ShowGridLines="True"
-              RowDefinitions="1*,6*,auto"
-              ColumnDefinitions="1*,5*,1*"
-              RowSpacing="2"
-              Margin="10">
-            <Grid x:Name="ImageFemaleGrid"
-                  Grid.Column="1"
-                  Grid.Row="1">
-                <Image x:Name="BodyImage"
-                       Source="{Binding AppearanceFemale.BodyImage}"
-                       ZIndex="2"
-                       Classes="Breathing"/>
-                <Image x:Name="HeadImage"
-                       Source="{Binding AppearanceFemale.HeadImage}"
-                       ZIndex="3"/>
+              Grid.Row="2"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Bottom"
+              Margin="0,0,0,15">
+            <Image x:Name="BodyImage"
+                   Source="{Binding AppearanceFemale.BodyImage}"
+                   ZIndex="2"
+                   Classes="Breathing"/>
+            <Image x:Name="HeadImage"
+                   Source="{Binding AppearanceFemale.HeadImage}"
+                   ZIndex="3"/>
 
-                <Image x:Name="TailImage"
-                       Source="{Binding AppearanceFemale.TailImage}"
-                       ZIndex="1"
-                       Classes="TailMove"/>
+            <Image x:Name="TailImage"
+                   Source="{Binding AppearanceFemale.TailImage}"
+                   ZIndex="1"
+                   Classes="TailMove"/>
 
-                <Image x:Name="EyesImage"
-                       Source="{Binding AppearanceFemale.EyesImage}"
-                       ZIndex="5"
-                       Classes="Blink AutoBlink"/>
-                <Image x:Name="EyesCloseImage"
-                       Source="{Binding AppearanceFemale.EyesCloseImage}"
-                       ZIndex="4"/>
+            <Image x:Name="EyesImage"
+                   Source="{Binding AppearanceFemale.EyesImage}"
+                   ZIndex="5"
+                   Classes="Blink AutoBlink"/>
+            <Image x:Name="EyesCloseImage"
+                   Source="{Binding AppearanceFemale.EyesCloseImage}"
+                   ZIndex="4"/>
 
-                <Image x:Name="EarsImageLeft"
-                       Source="{Binding AppearanceFemale.EarsLeftImage}"
-                       ZIndex="2"
-                       Classes="EarLeftMove"
-                       RenderTransformOrigin="38%,22%"
-                       /> 
-                <Image x:Name="EarsImageRight"
-                       Source="{Binding AppearanceFemale.EarsRightImage}"
-                       ZIndex="2"
-                       Classes="EarRightMove"
-                       RenderTransformOrigin="62%,22%" 
-                       />  
-                <Image x:Name="HornsImage"
-                       Source="{Binding AppearanceFemale.HornsImage}"
-                       ZIndex="1"/>
-            </Grid>        
-            <StackPanel x:Name="InfoFemaleStackPanel"
-                        Grid.Row="2"
-                        Grid.Column="1">
-                <Label x:Name="FemaleNameLabel"
-                       Content="{Binding CurrentFemalePet.Name, StringFormat='Имя: {0}'}"/>
-                <Label x:Name="FemaleSexLabel"
-                       Content="{Binding CurrentFemalePet.Sex, StringFormat='Пол: {0}'}"/>
-                <Label x:Name="FemaleGenerationLabel"
-                       Content="{Binding CurrentFemalePet.Generation, StringFormat='Поколение: {0}'}"/>
-                <Label x:Name="FemaleBodyLabel"
-                       Content="{Binding CurrentFemalePet.BodyGene, StringFormat='Тело: {0}'}"/>
-                <Label x:Name="FemaleHeadLabel"
-                       Content="{Binding CurrentFemalePet.HeadGene, StringFormat='Голова: {0}'}"/>
-                <Label x:Name="FemaleTailLabel"
-                       Content="{Binding CurrentFemalePet.TailGene, StringFormat='Хвост: {0}'}"/>
-                <Label x:Name="FemaleEarsLabel"
-                       Content="{Binding CurrentFemalePet.EarsGene, StringFormat='Уши: {0}'}"/>
-                <Label x:Name="FemaleEyesLabel"
-                       Content="{Binding CurrentFemalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
-            </StackPanel>
-            <Button x:Name="SelectFemaleButton"
-                    Grid.Column="1"
-                    Grid.Row="0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Content="Выбрать самку"
-                    Click="SelectFemaleButton_Click"/>
-
+            <Image x:Name="EarsImageLeft"
+                   Source="{Binding AppearanceFemale.EarsLeftImage}"
+                   ZIndex="2"
+                   Classes="EarLeftMove"
+                   RenderTransformOrigin="38%,22%"
+                   />
+            <Image x:Name="EarsImageRight"
+                   Source="{Binding AppearanceFemale.EarsRightImage}"
+                   ZIndex="2"
+                   Classes="EarRightMove"
+                   RenderTransformOrigin="62%,22%"
+                   />
+            <Image x:Name="HornsImage"
+                   Source="{Binding AppearanceFemale.HornsImage}"
+                   ZIndex="1"/>
         </Grid>
-        <Grid x:Name="RightGrid"
+        <!--Батя-->
+        <Border Grid.Row="1"
+                Grid.Column="2"
+                HorizontalAlignment="Stretch"
+                Background="#80FFFFFF"
+                CornerRadius="5"
+                Margin="2">
+            <Grid Grid.Column="2"
+                  Grid.Row="1"
+                  Margin="3"
+                  ColumnDefinitions="1*,1*,1*">
+                <StackPanel Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Grid.ColumnSpan="2">
+                    <Label x:Name="MaleNameLabel"
+                           Grid.ColumnSpan="2"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.Name, StringFormat='Имя: {0}'}"/>
+                    <Label x:Name="MaleSexLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.Sex, StringFormat='Пол: {0}'}"/>
+                    <Label x:Name="MaleGenerationLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.Generation, StringFormat='Поколение: {0}'}"/>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <Label x:Name="MaleHeadLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.HeadGene, StringFormat='Голова: {0}'}"/>
+                    <Label x:Name="MaleBodyLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.BodyGene, StringFormat='Тело: {0}'}"/>
+
+                    <Label x:Name="MaleTailLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.TailGene, StringFormat='Хвост: {0}'}"/>
+
+                </StackPanel>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <Label x:Name="MaleHornsLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.HornsGene, StringFormat='Рога: {0}'}"/>
+                    <Label x:Name="MaleEyesLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
+                    <Label x:Name="MaleEarsLabel"
+                           Classes="TextStyle"
+                           FontSize="12"
+                           Content="{Binding CurrentMalePet.EarsGene, StringFormat='Уши: {0}'}"/>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid x:Name="ImageMaleGrid"
               Grid.Column="2"
-              ShowGridLines="True"
-              RowDefinitions="1*,6*,auto"
-              ColumnDefinitions="1*,5*,1*"
-              RowSpacing="2"
-              Margin="10">
-            <Grid x:Name="ImageMaleGrid"
-                  Grid.Column="1"
-                  Grid.Row="1">
+              Grid.Row="2"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Bottom"
+              Margin="0,0,0,15">
+            <Image x:Name="BodyMaleImage"
+                   Source="{Binding AppearanceMale.BodyImage}"
+                   ZIndex="2"
+                   Classes="Breathing"/>
+            <Image x:Name="HeadMaleImage"
+                   Source="{Binding AppearanceMale.HeadImage}"
+                   ZIndex="3"/>
 
-                <Image x:Name="BodyMaleImage"
-                       Source="{Binding AppearanceMale.BodyImage}"
-                       ZIndex="2"
-                       Classes="Breathing"/>
+            <Image x:Name="TailMaleImage"
+                   Source="{Binding AppearanceMale.TailImage}"
+                   ZIndex="1"
+                   Classes="TailMove"/>
 
-                <Image x:Name="HeadMaleImage"
-                       Source="{Binding AppearanceMale.HeadImage}"
-                       ZIndex="3"/>
+            <Image x:Name="EyesMaleImage"
+                   Source="{Binding AppearanceMale.EyesImage}"
+                   ZIndex="5"
+                   Classes="Blink AutoBlink"/>
+            <Image x:Name="EyesCloseMaleImage"
+                   Source="{Binding AppearanceMale.EyesCloseImage}"
+                   ZIndex="4"/>
 
-                <Image x:Name="TailMaleImage"
-                       Source="{Binding AppearanceMale.TailImage}"
-                       ZIndex="1"
-                       Classes="TailMove"/>
-
-                <Image x:Name="EyesMaleImage"
-                       Source="{Binding AppearanceMale.EyesImage}"
-                       ZIndex="5"
-                       Classes="Blink AutoBlink"/>
-
-                <Image x:Name="EyesCloseMaleImage"
-                       Source="{Binding AppearanceMale.EyesCloseImage}"
-                       ZIndex="4"/>
-
-                <Image x:Name="EarsMaleImageLeft"
-                       Source="{Binding AppearanceMale.EarsLeftImage}"
-                       ZIndex="2"
-                       Classes="EarLeftMove"
-                       RenderTransformOrigin="38%,22%"/>
-
-                <Image x:Name="EarsMaleImageRight"
-                       Source="{Binding AppearanceMale.EarsRightImage}"
-                       ZIndex="2"
-                       Classes="EarRightMove"
-                       RenderTransformOrigin="62%,22%"/>
-
-                <Image x:Name="HornsMaleImage"
-                       Source="{Binding AppearanceMale.HornsImage}"
-                       ZIndex="1"/>
-                </Grid>
-            <StackPanel x:Name="InfoMaleStackPanel"
-                        Grid.Row="2"
-                        Grid.Column="1">
-                <Label x:Name="MaleNameLabel"
-                       Content="{Binding CurrentMalePet.Name, StringFormat='Имя: {0}'}"/>
-                <Label x:Name="MaleSexLabel"
-                       Content="{Binding CurrentMalePet.Sex, StringFormat='Пол: {0}'}"/>
-                <Label x:Name="MaleGenerationLabel"
-                       Content="{Binding CurrentMalePet.Generation, StringFormat='Поколение: {0}'}"/>
-                <Label x:Name="MaleBodyLabel"
-                       Content="{Binding CurrentMalePet.BodyGene, StringFormat='Тело: {0}'}"/>
-                <Label x:Name="MaleHeadLabel"
-                       Content="{Binding CurrentMalePet.HeadGene, StringFormat='Голова: {0}'}"/>
-                <Label x:Name="MaleTailLabel"
-                       Content="{Binding CurrentMalePet.TailGene, StringFormat='Хвост: {0}'}"/>
-                <Label x:Name="MaleEarsLabel"
-                       Content="{Binding CurrentMalePet.EarsGene, StringFormat='Уши: {0}'}"/>
-                <Label x:Name="MaleEyesLabel"
-                       Content="{Binding CurrentMalePet.EyesGene, StringFormat='Глаза: {0}'}"/>
-            </StackPanel>
-            <Button x:Name="SelectMaleButton"
-                    Grid.Column="1"
-                    Grid.Row="0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Content="Выбрать самца"
-                    Click="SelectMaleButton_Click"/>
-        
+            <Image x:Name="EarsImageMaleLeft"
+                   Source="{Binding AppearanceMale.EarsLeftImage}"
+                   ZIndex="2"
+                   Classes="EarLeftMove"
+                   RenderTransformOrigin="38%,22%"
+                   />
+            <Image x:Name="EarsImageMaleRight"
+                   Source="{Binding AppearanceMale.EarsRightImage}"
+                   ZIndex="2"
+                   Classes="EarRightMove"
+                   RenderTransformOrigin="62%,22%"
+                   />
+            <Image x:Name="HornsMaleImage"
+                   Source="{Binding AppearanceMale.HornsImage}"
+                   ZIndex="1"/>
         </Grid>
+
+
+
+
+
+
+
     </Grid>
+</Viewbox>
 </UserControl>

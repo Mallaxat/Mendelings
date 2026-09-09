@@ -12,18 +12,17 @@
     <Design.DataContext>
         <vm:MainViewModel />
     </Design.DataContext>
-
     <Grid
-        ShowGridLines="True"
+        ShowGridLines="False"
         RowDefinitions="1*,10*" >
 
         <Image x:Name="FoneImage"
-                   Grid.Column="0"
-                   Grid.Row="0"
-                   Grid.RowSpan="2"
-                   Source="/Assets/Level1/Main_Fone.png"
-                   Stretch="UniformToFill"
-                   IsHitTestVisible="False"/>
+               Grid.Column="0"
+               Grid.Row="0"
+               Grid.RowSpan="2"
+               Source="{Binding Fone}"
+               Stretch="Fill"
+               IsHitTestVisible="False"/>
 
         <ContentControl x:Name="PageContent"
                         HorizontalAlignment="Stretch"
@@ -34,38 +33,80 @@
         <Border Grid.Row="0"
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
                 Background="#B3f4f9fd"
-                CornerRadius="5"
-                >
+                CornerRadius="5" >
 
-
-            <StackPanel x:Name="ButtonsStackPanel"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Center"
-                        Orientation="Horizontal"
-                        Spacing="25">
+            <Grid Grid.Row="0"
+                  ShowGridLines="False"
+                  ColumnDefinitions="4*,3.5*,3.5*,3.5*,3.5*,4*">
                 <Button x:Name="MainButton"
-                        Content="Уход за питомцем"
+                        Grid.Column="1"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5"
+                        CornerRadius="5"
                         Click="MainButton_Click"
-                        Classes="ButtonStyle2"/>
+                        Classes="ButtonStyle">
+                    <Label Content="Уход за питомцем"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Classes="Text.Style"
+                           FontSize="13"
+                           FontWeight="Bold"/>
+                </Button>
                 <Button x:Name="BreedingButton"
-                        Content="К разведению"
+                        Grid.Column="2"
+                        Command="{Binding ChangeFone2}"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5"
+                        CornerRadius="5"
                         Click="BreedingButton_Click"
-                        Classes="ButtonStyle2"/>
+                        Classes="ButtonStyle">
+                    <Label Content="К разведению"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Classes="Text.Style"
+                           FontSize="13"
+                           FontWeight="Bold"/>
+
+                </Button>
                 <Button x:Name="FamilyButton"
-                        Content="К древу"
+                        Grid.Column="3"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5"
+                        CornerRadius="5"
                         Click="FamilyButton_Click"
-                        Classes="ButtonStyle2"/>
+                        Classes="ButtonStyle">
+                    <Label Content="К древу"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Classes="Text.Style"
+                           FontSize="13"
+                           FontWeight="Bold"/>
+                </Button>
                 <Button x:Name="CollectionButton"
-                        Content="Лаборатория"
+                        Grid.Column="4"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        Margin="5"
+                        CornerRadius="5"
                         Click="CollectionButton_Click"
-                        Classes="ButtonStyle2"/>
+                        Classes="ButtonStyle">
+                    <Label Content="Лаборатория"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Classes="Text.Style"
+                           FontSize="13"
+                           FontWeight="Bold"/>
+                </Button>
 
-            </StackPanel>
-                </Border>
+            </Grid>
+
+        </Border>
+           
     </Grid>
-
-
 
 </Window>
