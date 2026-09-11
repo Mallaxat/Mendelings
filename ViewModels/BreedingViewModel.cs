@@ -19,7 +19,6 @@ namespace Mendelings.ViewModels
         //Ассетная часть
         [ObservableProperty]
         private Bitmap? eyesCloseImage;
-
         [ObservableProperty]
         private Pet? currentFemalePet;
         [ObservableProperty]
@@ -36,13 +35,13 @@ namespace Mendelings.ViewModels
         private readonly CurrentUserService _currentUserService;
 
         [ObservableProperty]
-        private AppearancePet? appearanceFemale=new AppearancePet();
-        
+        private AppearancePet? appearanceFemale=new AppearancePet();  
         [ObservableProperty]
         private AppearancePet? appearanceMale = new AppearancePet();
-        
         [ObservableProperty]
         private AppearancePet? appearanceChild = new AppearancePet();
+
+
 
         public BreedingViewModel(PetRepository petRepository, PetService petService,
             GeneticsRepository geneticsRepository, GeneticsService geneticsService, 

@@ -6,9 +6,9 @@ namespace Mendelings.Core.Services
 {
     public class PetService
     {
-    
-        const int TIME_STATE_HUNGER= 10;
-        const int TIME_STATE_MOOD = 15;
+        //время раз в которое значение меняться будет
+        const int TIME_STATE_HUNGER= 5;
+        const int TIME_STATE_MOOD = 1;
         const int TIME_STATE_ENERGY = 5;
         const int TIME_STATE_SLEEP = 1;
         const int TIME_STATE_HEALTH = 5;
@@ -31,22 +31,20 @@ namespace Mendelings.Core.Services
             pet.Hunger = Math.Max(0, pet.Hunger - hungerLoss);
             pet.HungerMinutes %= TIME_STATE_HUNGER;
 
-            //если не спит
-            if (!pet.IsSleeping)
-            {
-                pet.MoodMinutes+= minutesPassed;
-                pet.EnergyMinutes+= minutesPassed;
 
-                int moodLoss = pet.MoodMinutes / TIME_STATE_MOOD;
-                int energyLoss = pet.EnergyMinutes / TIME_STATE_ENERGY;
+            pet.MoodMinutes += minutesPassed;
+            pet.EnergyMinutes += minutesPassed;
 
-                pet.Mood = Math.Max(0, pet.Mood - moodLoss);
-                pet.Energy = Math.Max(0, pet.Energy - energyLoss);
+            int moodLoss = pet.MoodMinutes / TIME_STATE_MOOD;
+            int energyLoss = pet.EnergyMinutes / TIME_STATE_ENERGY;
 
-                pet.MoodMinutes %= TIME_STATE_MOOD;
-                pet.EnergyMinutes %= TIME_STATE_ENERGY;
-               
-            }
+            pet.Mood = Math.Max(0, pet.Mood - moodLoss);
+            pet.Energy = Math.Max(0, pet.Energy - energyLoss);
+
+            pet.MoodMinutes %= TIME_STATE_MOOD;
+            pet.EnergyMinutes %= TIME_STATE_ENERGY;
+
+
 
             // Потеря здоровья если голодный или не спал
             if (pet.Hunger == 0 || (pet.Energy == 0 && !pet.IsSleeping))

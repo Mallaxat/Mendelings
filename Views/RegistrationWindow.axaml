@@ -7,6 +7,7 @@
         x:Class="Mendelings.Views.RegistrationWindow"
         x:DataType="vm:RegistrationViewModel"
         Title="Mendelings"
+        Icon="/Assets/Level0/icons_main.png"
         WindowState="Maximized"
         MinHeight="500" MinWidth="900">
 

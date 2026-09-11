@@ -1,5 +1,6 @@
 ﻿using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mendelings.Core;
@@ -22,6 +23,7 @@ namespace Mendelings.ViewModels
         private readonly GeneticsRepository _geneticsRepository;
         private readonly GeneticsService _geneticsService;
         private readonly AppearancePetService _appearancePetService;
+        private readonly DispatcherTimer _stateTimer;
 
         [ObservableProperty]
         private AppearancePet? appearanceCurrent = new AppearancePet();
@@ -41,7 +43,28 @@ namespace Mendelings.ViewModels
             _geneticsRepository = geneticRepository;
             _geneticsService = geneticService;
             _appearancePetService = appearancePetService;
+
+            _stateTimer = new DispatcherTimer
+            {
+                //через сколько минут тикать будет
+                Interval = TimeSpan.FromMinutes(1)
+            };
+            //Запуск таймера
+            _stateTimer.Tick += StateTimer_Tick;
+            _stateTimer.Start();
         }
+
+        //Метод для таймера падения потребностей
+        private async void StateTimer_Tick(object? sender, EventArgs e)
+        {
+            if (CurrentPet == null)
+                return;
+
+            _petService.UpdateState(CurrentPet);
+
+            await _petRepository.UpdateAsync(CurrentPet);
+        }
+
         //загружаем пета и обновляем
         [RelayCommand]
         public async Task LoadPetAsync(Pet current)

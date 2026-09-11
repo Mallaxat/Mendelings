@@ -26,7 +26,7 @@
                 Source="/Assets/Level2/Carpet2.png"
                 ZIndex="0"/>    
         </Grid>
-                <Grid Grid.Row="2" Grid.Column="1"
+             <Grid Grid.Row="2" Grid.Column="1"
               VerticalAlignment="Bottom"
               RowDefinitions="1*,9*">
             <Image

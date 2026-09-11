@@ -23,10 +23,10 @@ namespace Mendelings.ViewModels
         private string? _verifiedEmail;
 
         [ObservableProperty]
-        private string email = "Admin";
+        private string email;
 
         [ObservableProperty]
-        private string password = "123456";
+        private string password;
 
         [ObservableProperty]
         private string username = string.Empty;
